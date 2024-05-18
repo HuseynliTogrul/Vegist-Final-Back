@@ -29,25 +29,25 @@
     padding: 0 10px 15px 10px;
 }
 
-.categoryFilterList ul li,
-.sizeFilterList ul li,
-.materialFilterList ul li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 15px;
-}
+    .categoryFilterList ul li,
+    .sizeFilterList ul li,
+    .materialFilterList ul li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 15px;
+    }
 
-.categoryFilterList ul li:hover,
-.sizeFilterList ul li:hover,
-.materialFilterList ul li:hover{
-    color: #91b656;
-}
+        .categoryFilterList ul li:hover,
+        .sizeFilterList ul li:hover,
+        .materialFilterList ul li:hover {
+            color: #91b656;
+        }
 
-.categoryFilterList ul li span {
-    padding-right: 100px;
-    padding-left: 5px;
-}
+        .categoryFilterList ul li span {
+            padding-right: 100px;
+            padding-left: 5px;
+        }
 
 .checkBoxFilter input {
     cursor: pointer;
@@ -59,11 +59,11 @@
     margin-top: 20px;
 }
 
-.shopFilterCount p {
-    border-bottom: 1px solid #e2e2e2;
-    padding: 0 10px 15px 10px;
-    font-size: 15px;
-}
+    .shopFilterCount p {
+        border-bottom: 1px solid #e2e2e2;
+        padding: 0 10px 15px 10px;
+        font-size: 15px;
+    }
 
 .materialFilterList ul {
     border: none;
@@ -71,6 +71,10 @@
 
 .shop-right {
     width: 100%;
+}
+
+.shop-right .productIcon {
+    left: 40px;
 }
 
 .shop-right h3 {
@@ -83,7 +87,7 @@
     width: 100%;
 }
 
-.shopSortFilter{
+.shopSortFilter {
     border-bottom: 1px solid #e2e2e2;
     padding-bottom: 20px;
 }
