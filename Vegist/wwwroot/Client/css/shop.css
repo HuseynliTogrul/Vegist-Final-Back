@@ -1,0 +1,172 @@
+.shop-main {
+    display: flex;
+    margin: 50px 0;
+    gap: 20px;
+}
+
+.shop-left {
+    display: none;
+    width: 25%;
+}
+
+.categoryFilter h3,
+.shopFilterCount h3,
+.sizeFilter h3,
+.materialFilter h3 {
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.categoryFilterList ul,
+.sizeFilterList ul,
+.materialFilterList ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 260px;
+    overflow-y: auto;
+    border-bottom: 1px solid #e2e2e2;
+    padding: 0 10px 15px 10px;
+}
+
+.categoryFilterList ul li,
+.sizeFilterList ul li,
+.materialFilterList ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+}
+
+.categoryFilterList ul li:hover,
+.sizeFilterList ul li:hover,
+.materialFilterList ul li:hover{
+    color: #91b656;
+}
+
+.categoryFilterList ul li span {
+    padding-right: 100px;
+    padding-left: 5px;
+}
+
+.checkBoxFilter input {
+    cursor: pointer;
+}
+
+.shopFilterCount,
+.sizeFilter,
+.materialFilter {
+    margin-top: 20px;
+}
+
+.shopFilterCount p {
+    border-bottom: 1px solid #e2e2e2;
+    padding: 0 10px 15px 10px;
+    font-size: 15px;
+}
+
+.materialFilterList ul {
+    border: none;
+}
+
+.shop-right {
+    width: 100%;
+}
+
+.shop-right h3 {
+    font-size: 16px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.shop-right img {
+    width: 100%;
+}
+
+.shopSortFilter{
+    border-bottom: 1px solid #e2e2e2;
+    padding-bottom: 20px;
+}
+
+.shopFilter {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.sortFilter label {
+    font-weight: 500;
+    padding-right: 20px;
+}
+
+.sortFilter select {
+    border: none;
+    font-size: 15px;
+    padding-right: 25px;
+    cursor: pointer;
+}
+
+
+
+
+@media (min-width: 480px) and (max-width: 1000px) {
+    .shopSortFilter {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .shopFilter {
+        margin-bottom: 0;
+    }
+
+    .sortFilter {
+        margin-top: 30px;
+    }
+}
+
+@media (min-width: 1000px) and (max-width: 1200px) {
+    .shop-left {
+        display: block;
+        width: 35%;
+    }
+
+    .shop-right {
+        width: 65%;
+    }
+
+    .shopFilter {
+        display: none;
+    }
+
+    .sortFilter {
+        margin-top: 30px;
+        text-align: right;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 2000px) {
+    .shop-left {
+        display: block;
+    }
+
+    .shop-right {
+        width: 75%;
+    }
+
+    .shopFilter {
+        display: none;
+    }
+
+    .sortFilter {
+        margin-top: 30px;
+        text-align: right;
+    }
+
+    .products {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

@@ -1,0 +1,191 @@
+.loginSection {
+    padding: 60px 0;
+}
+
+.resetPassword{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.login-left {
+    border: 1px solid #eee;
+    border-radius: 3px;
+    padding: 15px;
+}
+
+.login-left h2 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.login-left p {
+    color: #6f6f6f;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    color: #6f6f6f;
+    font-size: 14px;
+}
+
+.loginForm input{
+    margin-top: 5px;
+    padding: 10px 15px;
+    border: 1px solid rgba(0, 0, 0, 10%);
+    font-size: inherit;
+}
+
+.login-left button {
+    padding: 13px 25px;
+    font-weight: 600;
+    color: #fff;
+    width: 100%;
+    border-radius: 3px;
+    background-color: #91b656;
+    border: 2px solid #91b656;
+    margin-top: 20px;
+    transition: all 0.3s linear;
+}
+
+.login-left button:hover {
+    background-color: inherit;
+    color: #91b656;
+}
+
+.login-left a {
+    color: #91b656;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.login-right h4 {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.loginAccount {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.login-right a {
+    padding: 13px 25px;
+    background-color: transparent;
+    font-weight: 500;
+    font-size: 15px;
+    border-radius: 3px;
+    color: #91b656;
+    border: 2px solid #91b656;
+    margin-bottom: 15px;
+    transition: all 0.3s linear;
+}
+
+.login-right a:hover {
+    background-color: #f2fae3;
+}
+
+.login-right p {
+    color: #91b656;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.loginPrivacy p {
+    color: #6f6f6f;
+    font-size: 12px;
+    line-height: 30px;
+    font-weight: normal;
+}
+
+.loginPrivacy a {
+    color: #91b656;
+    border: none;
+    padding: 0;
+    font-size: 13px;
+}
+
+.loginPrivacy a:hover {
+    background-color: inherit;
+}
+
+.emailForm{
+    margin-top: 15px;
+}
+
+.emailForm input{
+    width: 100%;
+    padding: 10px 15px;
+    margin-top: 5px;
+    border: 1px solid rgba(0, 0, 0, 10%);
+}
+
+@media (min-width: 700px) and (max-width: 2000px) {
+    .login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        /* max-width: 60%; */
+        margin: 0 auto;
+    }
+
+    .login-left {
+        width: 100%;
+        padding: 30px;
+    }
+
+    .login-right {
+        width: 50%;
+    }
+
+    .login-right h4 {
+        margin-bottom: 30px;
+    }
+
+    .login-right a {
+        margin-bottom: 30px;
+    }
+}
+
+@media (min-width: 1000px) and (max-width: 2000px) {
+    .loginSection {
+        padding: 60px 0;
+    }
+
+    .login {
+        max-width: 70%;
+    }
+
+    .loginForm {
+        margin-top: 30px;
+    }
+
+    .login-left {
+        width: 60%;
+    }
+
+    .login-left h2 {
+        font-size: 25px;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 2000px) {
+    .login {
+        max-width: 60%;
+    }
+}

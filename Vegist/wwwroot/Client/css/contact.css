@@ -1,0 +1,123 @@
+.contactSection {
+    padding: 60px 0;
+}
+
+.contactHeader {
+    text-align: center;
+}
+
+.contactHeader h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.contactHeader p {
+    color: #6f6f6f;
+    font-size: 15px;
+    margin: 10px 0 20px;
+}
+
+.contactContent {
+    margin-top: 20px;
+}
+
+.contactForms h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.contactForm {
+    color: #6f6f6f;
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.contactForm label {
+    margin-bottom: 5px;
+}
+
+.contactForm input {
+    margin-top: 5px;
+    padding: 10px 15px;
+    border: 1px solid rgba(0, 0, 0, 10%);
+}
+
+.contactForm textarea {
+    resize: none;
+    padding: 10px 15px;
+    border: 1px solid rgba(0, 0, 0, 10%);
+    height: 60px;
+}
+
+.contactForms button {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 30px;
+    border-radius: 3px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: #91b656;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s linear;
+}
+
+.contactForms button:hover {
+    background-color: black;
+}
+
+.contactInfo h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+.contactInfo p {
+    color: #6f6f6f;
+    line-height: 30px;
+    font-size: 15px;
+    /* margin-bottom: 15px; */
+}
+
+.contactInfoList ul li {
+    display: flex;
+    gap: 7px;
+    margin-top: 15px;
+}
+
+.contactAddress h4,
+.contactPhone h4,
+.contactMail h4 {
+    font-weight: 500;
+}
+
+
+
+
+@media (min-width: 700px) and (max-width: 2000px) {
+    .contactHeader h2 {
+        font-size: 30px;
+    }
+
+    .contactContent {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .contactForms {
+        width: 50%;
+    }
+
+    .contactInfo {
+        width: 50%;
+    }
+}

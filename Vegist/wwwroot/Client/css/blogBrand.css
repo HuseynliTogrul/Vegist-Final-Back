@@ -1,0 +1,149 @@
+.blogBrandImg img {
+    width: 100%;
+}
+
+.blogBrand h4 {
+    margin-top: 25px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.blog-info ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.blog-info ul li {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #6f6f6f;
+}
+
+.blog-info ul li p {
+    margin: 0;
+}
+
+.blog-info ul li span {
+    color: #91b656;
+}
+
+.blogBrand p {
+    color: #6f6f6f;
+    line-height: 30px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.blogImgDesc img {
+    float: left;
+    margin-right: 15px;
+}
+
+.blogImgDesc h5 {
+    color: #6f6f6f;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 5px;
+    line-height: 25px;
+}
+
+.blogBrand .blockquote {
+    color: #91b656;
+    padding: 10px 15px;
+    line-height: normal;
+}
+
+.post-info {
+    padding: 15px;
+    margin-bottom: 0;
+    background-color: #f7f7f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 25px 0 30px;
+}
+
+.post-info i {
+    font-size: 30px;
+    color: #6f6f6f;
+}
+
+.post-info p {
+    font-weight: 600;
+}
+
+.post-info h4 {
+    color: #91b656;
+    font-weight: 500;
+}
+
+.postInfo-tag ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.postInfo-tag ul li {
+    padding: 5px 10px;
+    color: white;
+    border-radius: 2px;
+    cursor: pointer;
+    background: #91b656;
+    font-size: 15px;
+    transition: all 0.3s linear;
+}
+
+.postInfo-tag ul li:hover {
+    background: black;
+}
+
+.blog-share ul {
+    display: flex;
+    gap: 7px;
+    margin-bottom: 30px;
+}
+
+.blog-share ul li {
+    border-radius: 50%;
+}
+
+.blog-share ul li i {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+}
+
+.blog-share ul li:first-child {
+    background-color: #3b5999;
+}
+
+.blog-share ul li:nth-child(2) {
+    background-color: #55acee;
+}
+
+.blog-share ul li:last-child {
+    background-color: #bd081c;
+}
+
+@media (min-width: 768px) and (max-width: 2000px) {
+    .blogBrand .blockquote {
+        padding: 0;
+    }
+
+    .blog-info ul {
+        flex-direction: row;
+        gap: 30px;
+    }
+
+}

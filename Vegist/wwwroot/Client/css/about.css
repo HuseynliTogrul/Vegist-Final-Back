@@ -1,0 +1,48 @@
+.about {
+    padding: 60px 0;
+}
+
+.about-main {
+    text-align: center;
+}
+
+.about-main h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.about-main p {
+    color: #6f6f6f;
+    line-height: 30px;
+    font-size: 15px;
+}
+
+.aboutImg img {
+    height: 210px;
+    width: 210px;
+    margin: 20px 0;
+}
+
+.about-desc p {
+    color: #6f6f6f;
+    line-height: 30px;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.about-desc p:last-child {
+    margin: 0;
+}
+
+
+@media (min-width: 1200px) and (max-width: 2000px) {
+    .about-main {
+        margin: 0 auto;
+        width: 60%;
+    }
+
+    .about-main h2 {
+        font-size: 30px;
+    }
+}

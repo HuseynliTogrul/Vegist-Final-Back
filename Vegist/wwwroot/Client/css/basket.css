@@ -1,0 +1,283 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.basket {
+    margin-bottom: 50px;
+}
+
+.basket-table {
+    border-bottom: 1px solid rgba(0, 0, 0, 15%);
+}
+
+.basket-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.basket-table thead tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 15%);
+}
+
+.basket-table tr th {
+    font-weight: 600;
+    padding: 16px;
+    text-align: start;
+    padding-left: 0;
+}
+
+.basket-table tr td {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.item-media {
+    display: flex;
+    gap: 30px;
+    font-size: 15px;
+}
+
+.media-img {
+    width: 100px;
+}
+
+.media-img img {
+    padding: 2px;
+    background-color: #fff;
+    border: 1px solid rgba(0 0 0 / 10%);
+    border-radius: 1px;
+    max-width: 100%;
+    height: auto;
+}
+
+.media-info {
+    width: max-content;
+}
+
+.media-title a {
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+
+.media-title a:hover {
+    color: #91b656;
+}
+
+.media-price {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.discPrice {
+    font-weight: 600;
+}
+
+.sellPrice {
+    text-decoration: line-through;
+    font-weight: 400;
+}
+
+.media-size {
+    margin-bottom: 10px;
+}
+
+.media-size,
+.media-material {
+    display: flex;
+    gap: 5px;
+    font-weight: 600;
+}
+
+.media-size p,
+.media-material p {
+    font-weight: 400;
+}
+
+.item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-count {
+    border: 1px solid rgba(0, 0, 0, 10%);
+    display: flex;
+    width: max-content;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+
+.quantity-count:hover {
+    border: 1px solid #91b656;
+}
+
+.quantity-count button {
+    width: 30px;
+    height: 100%;
+    font-size: 24px;
+    border: none;
+}
+
+.quantity-count input {
+    border: none;
+    text-align: center;
+    width: 50px;
+}
+
+.quantity-icon:hover {
+    cursor: pointer;
+    color: #91b656;
+}
+
+.item-total {
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.discount-block {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.discount-block i:first-child {
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    color: #6f6f6f;
+}
+
+.discount-block input {
+    padding: 10px 15px;
+    padding-left: 40px;
+    font-size: 14px;
+    border: 1px solid rgba(0, 0, 0, 10%);
+}
+
+.discount-block i:last-child {
+    position: absolute;
+    top: 0px;
+    left: 185px;
+    background: black;
+    color: white;
+    padding: 13px 15px;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+
+.discount-block i:last-child:hover {
+    background-color: #91b656;
+}
+
+.discount-content {
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
+.discount-content a {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 1;
+    padding: 10px 30px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: #91b656;
+    transition: all 0.3s linear;
+}
+
+.discount-content a:hover {
+    background-color: black;
+}
+
+.cart-note {
+    margin-top: 25px;
+}
+
+.cart-note p {
+    font-weight: 500;
+    font-size: 16px;
+    padding-bottom: 20px;
+}
+
+.cart-note textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid rgba(0, 0, 0, 10%);
+    resize: vertical;
+}
+
+.notProduct {
+    display: none;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    padding-top: 80px;
+    padding-bottom: 70px;
+}
+
+.notProduct a {
+    border-bottom: 1px solid black;
+    transition: all 0.3s linear;
+}
+
+.notProduct a:hover {
+    border-bottom: 1px solid #91b656;
+    color: #91b656;
+}
+
+
+
+@media screen and (max-width: 760px) {
+    .basket-table thead {
+        display: none;
+    }
+}
+
+@media (min-width: 760px) and (max-width: 2000px) {
+    .basket-table tr td {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .discount-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .discount-block {
+        margin-bottom: 0px;
+    }
+
+    .item-total {
+        margin-bottom: 0px;
+    }
+
+    .notProduct {
+        font-size: 25px;
+    }
+}
+
+/* @media (min-width: 1000px) and (max-width: 2000px) {
+    .basket {
+        width: 70%;
+    }
+} */

@@ -1,0 +1,177 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Vegist.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Vegist.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\icons\\express.svg",
+      "PackagePath": "staticwebassets\\Client\\assets\\icons\\express.svg"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\icons\\mastercard.svg",
+      "PackagePath": "staticwebassets\\Client\\assets\\icons\\mastercard.svg"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\icons\\paypal.svg",
+      "PackagePath": "staticwebassets\\Client\\assets\\icons\\paypal.svg"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\icons\\visa.svg",
+      "PackagePath": "staticwebassets\\Client\\assets\\icons\\visa.svg"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\banners-1.webp",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\banners-1.webp"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\banners-2.webp",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\banners-2.webp"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\banners-3.webp",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\banners-3.webp"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\blogImg.webp",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\blogImg.webp"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\blogImg1.webp",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\blogImg1.webp"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\blogImg2.webp",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\blogImg2.webp"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\blogImg3.webp",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\blogImg3.webp"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\blogProfil.avif",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\blogProfil.avif"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\category1.webp",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\category1.webp"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\category2.webp",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\category2.webp"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\logo.svg",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\logo.svg"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\mini-img.webp",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\mini-img.webp"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\product1-Hover.webp",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\product1-Hover.webp"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\product1.webp",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\product1.webp"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\product2-Hover.webp",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\product2-Hover.webp"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\product2.webp",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\product2.webp"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\shopImg.webp",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\shopImg.webp"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\sliderImg.webp",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\sliderImg.webp"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\sliderImg1.webp",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\sliderImg1.webp"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\sliderImg2.webp",
+      "PackagePath": "staticwebassets\\Client\\assets\\images\\sliderImg2.webp"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\css\\about.css",
+      "PackagePath": "staticwebassets\\Client\\css\\about.css"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\css\\basket.css",
+      "PackagePath": "staticwebassets\\Client\\css\\basket.css"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\css\\blog.css",
+      "PackagePath": "staticwebassets\\Client\\css\\blog.css"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\css\\blogBrand.css",
+      "PackagePath": "staticwebassets\\Client\\css\\blogBrand.css"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\css\\contact.css",
+      "PackagePath": "staticwebassets\\Client\\css\\contact.css"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\css\\login.css",
+      "PackagePath": "staticwebassets\\Client\\css\\login.css"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\css\\product.css",
+      "PackagePath": "staticwebassets\\Client\\css\\product.css"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\css\\shop.css",
+      "PackagePath": "staticwebassets\\Client\\css\\shop.css"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\css\\style.css",
+      "PackagePath": "staticwebassets\\Client\\css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\css\\wishlist.css",
+      "PackagePath": "staticwebassets\\Client\\css\\wishlist.css"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\js\\app.js",
+      "PackagePath": "staticwebassets\\Client\\js\\app.js"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\js\\basket.js",
+      "PackagePath": "staticwebassets\\Client\\js\\basket.js"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\js\\login.js",
+      "PackagePath": "staticwebassets\\Client\\js\\login.js"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\js\\product.js",
+      "PackagePath": "staticwebassets\\Client\\js\\product.js"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Vegist.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.Vegist.props",
+      "PackagePath": "build\\Vegist.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.Vegist.props",
+      "PackagePath": "buildMultiTargeting\\Vegist.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.Vegist.props",
+      "PackagePath": "buildTransitive\\Vegist.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
