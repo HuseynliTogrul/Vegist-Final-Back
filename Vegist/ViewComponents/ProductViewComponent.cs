@@ -41,7 +41,7 @@ namespace Vegist.ViewComponents
             {
                 paginateVm.Products = await products.Skip((page - 1) * pageSize)
                                                     .Take(pageSize)
-                                                    .Where(x => x.CategoryId == categoryId && x.Name.StartsWith(productName))
+                                                    .Where(x => x.CategoryId == categoryId && x.Title.StartsWith(productName))
                                                     .OrderByDescending(x => x.Id)
                                                     .ToListAsync();
                 return View(paginateVm);

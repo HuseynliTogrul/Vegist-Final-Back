@@ -13,31 +13,34 @@ input[type=number] {
     margin-bottom: 50px;
 }
 
-.basket-table {
+.basket-header {
+    display: none;
     border-bottom: 1px solid rgba(0, 0, 0, 15%);
+    padding-bottom: 15px;
 }
 
-.basket-table table {
-    width: 100%;
-    border-collapse: collapse;
+.basket-header ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.basket-table thead tr {
-    border-bottom: 1px solid rgba(0, 0, 0, 15%);
+.basket-header ul li {
+    font-weight: 500;
 }
 
-.basket-table tr th {
-    font-weight: 600;
-    padding: 16px;
-    text-align: start;
-    padding-left: 0;
-}
-
-.basket-table tr td {
+.basketList ul li {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 30px;
+    align-items: start;
+    gap: 15px;
+    margin: 30px 0;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 15%);
+}
+
+.basket-header ul li:nth-child(2) {
+    margin-left: 140px;
 }
 
 .item-media {
@@ -273,6 +276,17 @@ input[type=number] {
 
     .notProduct {
         font-size: 25px;
+    }
+
+    .basket-header {
+        display: block;
+    }
+
+    .basketList ul li {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0;
     }
 }
 

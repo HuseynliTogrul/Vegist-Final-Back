@@ -260,13 +260,13 @@
 }
 
 .MoreDetail ul,
-.KeySpecification ul{
+.KeySpecification ul {
     padding-left: 15px;
     margin-top: 8px;
 }
 
 .MoreDetail ul li,
-.KeySpecification ul li{
+.KeySpecification ul li {
     font-size: 15px;
     list-style-type: disc;
     color: #6f6f6f;
@@ -275,11 +275,11 @@
 }
 
 .MoreDetail ul li:last-child,
-.KeySpecification ul li:last-child{
+.KeySpecification ul li:last-child {
     margin: 0;
 }
 
-.KeySpecification{
+.KeySpecification {
     margin-bottom: 30px;
 }
 
@@ -307,7 +307,8 @@
     .product-detail {
         display: flex;
         gap: 30px;
-        width: 75%;
+        /* width: 75%; */
+        width: 100%;
     }
 
     .detail-img {

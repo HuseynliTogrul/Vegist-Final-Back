@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using System.Data.Entity;
+using System.Net.Http.Json;
+using System.Text.Json.Serialization;
 using Vegist.Data;
 using Vegist.Models;
 using Vegist.ViewModels;
@@ -20,7 +22,9 @@ namespace Vegist.Controllers
             var products = _context.Products.AsQueryable();
             products = products
                .Include(x => x.Category)
-               .Include(x => x.ProductImages);
+               .Include(x => x.ProductImages)
+               .Skip((page - 1) * pageSize)
+               .Take(pageSize);
             var count = GetPageCount(pageSize);
             PaginateVm paginateVm = new PaginateVm()
             {
@@ -73,6 +77,7 @@ namespace Vegist.Controllers
                     Id = id
                 });
             }
+
             Response.Cookies.Append("basket", JsonConvert.SerializeObject(basketVm));
             return RedirectToAction("Index");
         }
@@ -90,26 +95,6 @@ namespace Vegist.Controllers
         public IActionResult ChangePage(int page = 1, int pageSize = 1)
         {
             return ViewComponent("Product", new { page = page, pageSize = pageSize });
-        }
-
-        public async Task<IActionResult> Search(ProductSearchVm vm)
-        {
-            var products = _context.Products.Include(x => x.ProductImages)
-              .Include(c => c.Category).AsQueryable();
-
-            if (vm.CategoryId != null && vm.Name == null)
-            {
-                products.Where(x => x.CategoryId == vm.CategoryId);
-            }
-            else if (vm.Name != null && vm.CategoryId == null)
-            {
-                products.Where(x => x.Title.ToLower().StartsWith(vm.Name.ToLower()));
-            }
-            else
-            {
-                products.Where(x => x.CategoryId == vm.CategoryId && x.Title.ToLower().StartsWith(vm.Name.ToLower()));
-            }
-            return View(await products.ToListAsync());
         }
     }
 }

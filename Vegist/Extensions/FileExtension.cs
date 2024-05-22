@@ -2,10 +2,10 @@
 {
     public static class FileExtension
     {
-        public static async Task<string> SaveFileAsync(this IFormFile file, string root, string client, string assets, string folderName)
+        public static async Task<string> SaveFileAsync(this IFormFile file, string root, string Client, string assets, string folderName)
         {
             string uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-            string path = Path.Combine(root, client, assets, folderName, uniqueFileName);
+            string path = Path.Combine(root, Client, assets, folderName, uniqueFileName); 
 
 
             using FileStream fs = new FileStream(path, FileMode.Create);

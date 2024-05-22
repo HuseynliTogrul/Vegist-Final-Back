@@ -9,6 +9,10 @@
     display: none;
 }
 
+.login{
+    flex-direction: column;
+}
+
 .login-left {
     border: 1px solid #eee;
     border-radius: 3px;
@@ -142,6 +146,7 @@
         gap: 30px;
         /* max-width: 60%; */
         margin: 0 auto;
+        flex-direction: row;
     }
 
     .login-left {
