@@ -45,8 +45,6 @@ namespace Vegist.Areas.Admin.Controllers
                 return View(category);
             }
 
-            //string uniqueFileName = await category.File.SaveFileAsync(_env.WebRootPath, "client", "assets", "categoryIcons");
-
             Category newCategory = new Category
             {
                 Name = category.Name,

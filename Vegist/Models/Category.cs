@@ -7,7 +7,7 @@ namespace Vegist.Models
     {
         public string Name { get; set; } = null!;
         [NotMapped]
-        public IFormFile File { get; set; }
+        public IFormFile? File { get; set; }
         public List<ProductImage> ProductImages { get; set; } = null!;
         public List<Product> Products { get; set; } = null!;
     }

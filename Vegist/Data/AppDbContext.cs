@@ -12,7 +12,9 @@ namespace Vegist.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<Size> Sizes { get; set; }
+        public DbSet<Material> Materials { get; set; }
         public DbSet<ProductSize> ProductSizes { get; set; }
+        public DbSet<ProductMaterial> ProductMaterial { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

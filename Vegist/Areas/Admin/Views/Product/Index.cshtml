@@ -35,11 +35,11 @@
                                     @foreach (var product in Model)
                                     {
                                         <tr>
-                                            <td><img width="100" src="~/client/assets/imgs/products/@product.ProductImages.FirstOrDefault(x=>x.IsMain).Url" /></td>
+                                            <td><img width="100" src="~/Client/assets/images/@product.ProductImages.FirstOrDefault(x=>x.IsMain).Url" /></td>
                                             <td>@product.Title</td>
-                                            <td>@product.Description</td>
                                             <td>@product.SellPrice</td>
                                             <td>@product.DiscPrice</td>
+                                            <td>@product.Description</td>
                                             <td>@product.Rating</td>
                                             <td>@product.Category.Name</td>
                                             <td><a class="btn btn-danger" asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" asp-area="Admin">Delete</a></td>

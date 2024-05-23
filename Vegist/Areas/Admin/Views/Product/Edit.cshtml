@@ -34,17 +34,17 @@
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Main File</label>
-        <input asp-for="MainFile" class="form-control" id="exampleInputPassword1">
+        <input asp-for="MainFile" class="form-control p-1" id="exampleInputPassword1">
         <span asp-validation-for="MainFile" class="text-danger"></span>
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Hover File</label>
-        <input asp-for="HoverFile" class="form-control" id="exampleInputPassword1">
+        <input asp-for="HoverFile" class="form-control p-1" id="exampleInputPassword1">
         <span asp-validation-for="HoverFile" class="text-danger"></span>
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Additional Files</label>
-        <input asp-for="Files" class="form-control" id="exampleInputPassword1">
+        <input asp-for="Files" class="form-control p-1" id="exampleInputPassword1">
         <span asp-validation-for="Files" class="text-danger"></span>
     </div>
     <div class="mb-3">
@@ -54,9 +54,9 @@
         </select>
         <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
-    <div class="row productImages">
+    @* <div class="row productImages">
        <partial name="_ProductImagePartial" model="Model.ProductImages"></partial>
-    </div>
+    </div> *@
     <div asp-validation-summary="ModelOnly" class="text-danger">  </div>
     <button type="submit" class="btn btn-primary mt-2">Save</button>
 </form>

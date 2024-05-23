@@ -248,6 +248,26 @@ namespace Vegist.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("Vegist.Models.Material", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Materials");
+                });
+
             modelBuilder.Entity("Vegist.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -320,6 +340,35 @@ namespace Vegist.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductImages");
+                });
+
+            modelBuilder.Entity("Vegist.Models.ProductMaterial", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("MaterialId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MaterialId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductMaterial");
                 });
 
             modelBuilder.Entity("Vegist.Models.ProductSize", b =>
@@ -448,6 +497,25 @@ namespace Vegist.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Vegist.Models.ProductMaterial", b =>
+                {
+                    b.HasOne("Vegist.Models.Material", "Material")
+                        .WithMany("ProductMaterial")
+                        .HasForeignKey("MaterialId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Vegist.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Material");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Vegist.Models.ProductSize", b =>
                 {
                     b.HasOne("Vegist.Models.Product", "Product")
@@ -472,6 +540,11 @@ namespace Vegist.Migrations
                     b.Navigation("ProductImages");
 
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Vegist.Models.Material", b =>
+                {
+                    b.Navigation("ProductMaterial");
                 });
 
             modelBuilder.Entity("Vegist.Models.Product", b =>

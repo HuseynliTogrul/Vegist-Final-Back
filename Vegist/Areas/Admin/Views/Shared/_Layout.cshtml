@@ -86,6 +86,20 @@
                 </div>
             </li>
             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Material"
+                   aria-expanded="true" aria-controls="Material">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Materials</span>
+                </a>
+                <div id="Material" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        @* <h6 class="collapse-header">Custom Components:</h6> *@
+                        <a class="collapse-item" asp-controller="Material" asp-action="Index">Material List</a>
+                        <a class="collapse-item" asp-controller="Material" asp-action="Create">Material Create</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pSize"
                    aria-expanded="true" aria-controls="pSize">
                     <i class="fas fa-fw fa-cog"></i>

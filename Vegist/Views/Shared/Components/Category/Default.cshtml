@@ -1,0 +1,14 @@
+﻿@model List<Category>
+
+@foreach (var category in Model)
+{
+    <div class="swiper-slide">
+        <a asp-controller="Product" asp-action="Index">
+            <img src="~/Client/assets/@category.File" alt="category1">
+        </a>
+        <div class="category-desc">
+            <p class="categoryDesc">@category.Name</p>
+            <span class="categorySpan">@category.Products.Count></span>
+        </div>
+    </div>
+}  
