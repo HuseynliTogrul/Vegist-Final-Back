@@ -26,6 +26,7 @@ namespace Vegist.Areas.Admin.Controllers
             List<Product> products = await _context.Products
                                                    .Include(x => x.ProductImages)
                                                    .Include(x => x.Category)
+                                                   .Where(x => !x.IsDeleted)
                                                    .ToListAsync();
             return View(products);
         }

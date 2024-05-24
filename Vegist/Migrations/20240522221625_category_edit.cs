@@ -12,7 +12,7 @@ namespace Vegist.Migrations
                 name: "CategoryId",
                 table: "ProductImages",
                 type: "int",
-                nullable: true);
+                nullable: false);
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductImages_CategoryId",

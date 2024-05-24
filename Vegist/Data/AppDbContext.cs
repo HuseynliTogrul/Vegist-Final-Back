@@ -13,6 +13,7 @@ namespace Vegist.Data
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<Size> Sizes { get; set; }
         public DbSet<Material> Materials { get; set; }
+        public DbSet<Slider> Sliders { get; set; }
         public DbSet<ProductSize> ProductSizes { get; set; }
         public DbSet<ProductMaterial> ProductMaterial { get; set; }
 

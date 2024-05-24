@@ -27,6 +27,14 @@
                                     </tr>
                                 </thead>
                                 <tbody id="tbody">
+                                    @foreach (var size in Model)
+                                    {
+                                        <tr class="odd">
+                                            <td class="sorting_1">@size.Name</td>
+                                            <td><a class="btn btn-danger" asp-controller="Size" asp-action="Delete" asp-route-id="@size.Id">Delete</a></td>
+                                            <td><a class="btn btn-warning" asp-controller="Size" asp-action="Edit" asp-route-id="@size.Id">Edit</a></td>
+                                        </tr>
+                                    }
                                     @* @await Html.PartialAsync("_CategoryPartial",Model) *@
                                     @* <partial name="_SizePartial" model="Model" /> *@
                                 </tbody>

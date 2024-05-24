@@ -27,6 +27,14 @@
                                     </tr>
                                 </thead>
                                 <tbody id="tbody">
+                                    @foreach (var material in Model)
+                                    {
+                                        <tr class="odd">
+                                            <td class="sorting_1">@material.Name</td>
+                                            <td><a class="btn btn-danger" asp-controller="Material" asp-action="Delete" asp-route-id="@material.Id">Delete</a></td>
+                                            <td><a class="btn btn-warning" asp-controller="Material" asp-action="Edit" asp-route-id="@material.Id">Edit</a></td>
+                                        </tr>
+                                    }
                                     @* @await Html.PartialAsync("_CategoryPartial",Model) *@
                                     @* <partial name="_MaterialPartial" model="Model" /> *@
                                 </tbody>

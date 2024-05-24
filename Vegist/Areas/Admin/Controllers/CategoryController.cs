@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Vegist.Data;
 using Vegist.Extentions;
 using Vegist.Models;
+using Vegist.ViewModels;
 
 namespace Vegist.Areas.Admin.Controllers
 {
@@ -20,20 +21,24 @@ namespace Vegist.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var categories = await _context.Categories.Include(x => x.Products).Where(x => !x.IsDeleted).ToListAsync();
+            var categories = await _context.Categories
+                                            .Include(x => x.Products)
+                                            .Where(x => !x.IsDeleted)
+                                            .ToListAsync();
             return View(categories);
         }
+
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Create(Category category)
         {
-            if (ModelState["Name"] == null ||
-                ModelState["File"] == null) return View(category);
-
+            if (!ModelState.IsValid)
+                return View(category);
             if (!category.File.CheckFileType("image"))
             {
                 ModelState.AddModelError("", "Invalid File");
@@ -44,6 +49,15 @@ namespace Vegist.Areas.Admin.Controllers
                 ModelState.AddModelError("", "Invalid File Size");
                 return View(category);
             }
+            var isExist = await _context.Categories.AnyAsync(x => x.Name.ToLower() == category.Name.ToLower());
+
+            if (isExist)
+            {
+                ModelState.AddModelError("Name", "category name is already exist");
+                return View();
+
+            }
+            string uniqueFileName = await category.File.SaveFileAsync(_env.WebRootPath,"Client", "assets", "images");
 
             Category newCategory = new Category
             {
@@ -52,6 +66,7 @@ namespace Vegist.Areas.Admin.Controllers
 
             await _context.Categories.AddAsync(newCategory);
             await _context.SaveChangesAsync();
+
             return RedirectToAction("Index");
         }
 
@@ -61,7 +76,9 @@ namespace Vegist.Areas.Admin.Controllers
             {
                 return View("404");
             }
-            Category? category = await _context.Categories.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            Category? category = await _context.Categories
+                                                .AsNoTracking()
+                                                .FirstOrDefaultAsync(x => x.Id == id);
             if (category == null)
             {
                 return View("404");
@@ -69,11 +86,12 @@ namespace Vegist.Areas.Admin.Controllers
             return View(category);
         }
 
-
         public async Task<IActionResult> Update(int id, Category category)
         {
             if (id != category.Id) return BadRequest();
-            Category? existsCategory = await _context.Categories.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            Category? existsCategory = await _context.Categories
+                                                        .AsNoTracking()
+                                                        .FirstOrDefaultAsync(x => x.Id == id);
             if (existsCategory == null) return NotFound();
             if (category.File != null)
             {
@@ -88,10 +106,9 @@ namespace Vegist.Areas.Admin.Controllers
                     return View(category);
                 }
 
-                //category.File.DeleteFile(_env.WebRootPath, "client", "assets", "categoryIcons", existsCategory.File);
-
+                
                 var uniqueFileName = await category.File.
-                    SaveFileAsync(_env.WebRootPath, "client", "assets", "categoryIcons");
+                    SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
 
                 existsCategory.Name = category.Name;
                 _context.Update(existsCategory);
@@ -109,7 +126,7 @@ namespace Vegist.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             Category? category = await _context.Categories.FirstOrDefaultAsync(x => x.Id == id);
@@ -117,13 +134,15 @@ namespace Vegist.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
+            _context.Categories.Remove(category);
+            var path = Path.Combine(_env.WebRootPath, "Client", "assets", "images");
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
             category.IsDeleted = true;
             await _context.SaveChangesAsync();
-
-            var categories = await _context.Categories.Include(x => x.Products).Where(x => !x.IsDeleted).ToListAsync();
-
-            return PartialView("_CategoryPartial", categories);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

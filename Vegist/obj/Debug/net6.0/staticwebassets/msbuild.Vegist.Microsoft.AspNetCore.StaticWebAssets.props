@@ -29792,6 +29792,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\06076b97-95ba-4edd-93ac-9c6256113fac_apple.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\0a66078e-2277-42a3-8e08-d13ed1fbc897_1c485f9a-a051-4380-9685-a4cc1d6d4da4_appleGreen.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Vegist</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Vegist</BasePath>
+      <RelativePath>Client/assets/images/0a66078e-2277-42a3-8e08-d13ed1fbc897_1c485f9a-a051-4380-9685-a4cc1d6d4da4_appleGreen.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\0a66078e-2277-42a3-8e08-d13ed1fbc897_1c485f9a-a051-4380-9685-a4cc1d6d4da4_appleGreen.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\0e087a0a-b1c2-46bc-a0a7-64986e519ff7_appleYellow.jpeg))">
       <SourceType>Package</SourceType>
       <SourceId>Vegist</SourceId>
@@ -29807,6 +29823,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\0e087a0a-b1c2-46bc-a0a7-64986e519ff7_appleYellow.jpeg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\171d87e9-cdd2-4ee4-8d8f-4c9be1e1e8a4_74785866-0ebc-4a91-a748-f61ee2492b32_cucumber.webp))">
+      <SourceType>Package</SourceType>
+      <SourceId>Vegist</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Vegist</BasePath>
+      <RelativePath>Client/assets/images/171d87e9-cdd2-4ee4-8d8f-4c9be1e1e8a4_74785866-0ebc-4a91-a748-f61ee2492b32_cucumber.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\171d87e9-cdd2-4ee4-8d8f-4c9be1e1e8a4_74785866-0ebc-4a91-a748-f61ee2492b32_cucumber.webp))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\1c485f9a-a051-4380-9685-a4cc1d6d4da4_appleGreen.jpg))">
       <SourceType>Package</SourceType>
@@ -29919,6 +29951,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\378f0f5a-fc37-43b0-921b-20e2d7198075_appleYellow.jpeg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\39d7a2d7-e56d-4b00-a138-f2f9eb3656c5_9fc0329e-f4d5-4db6-a4f6-a38527ead6eb_cucumber2.webp))">
+      <SourceType>Package</SourceType>
+      <SourceId>Vegist</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Vegist</BasePath>
+      <RelativePath>Client/assets/images/39d7a2d7-e56d-4b00-a138-f2f9eb3656c5_9fc0329e-f4d5-4db6-a4f6-a38527ead6eb_cucumber2.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\39d7a2d7-e56d-4b00-a138-f2f9eb3656c5_9fc0329e-f4d5-4db6-a4f6-a38527ead6eb_cucumber2.webp))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\3b494afc-cdcd-4607-99f9-71a9054aa74d_appleGreen.jpg))">
       <SourceType>Package</SourceType>
@@ -30112,6 +30160,38 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\74785866-0ebc-4a91-a748-f61ee2492b32_cucumber.webp))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\74def597-8652-4e22-9ec1-571a2fd1a35d_00ce608f-b9b6-4fcb-829f-6f770802cd4c_apple.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Vegist</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Vegist</BasePath>
+      <RelativePath>Client/assets/images/74def597-8652-4e22-9ec1-571a2fd1a35d_00ce608f-b9b6-4fcb-829f-6f770802cd4c_apple.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\74def597-8652-4e22-9ec1-571a2fd1a35d_00ce608f-b9b6-4fcb-829f-6f770802cd4c_apple.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\79bac9c3-8f98-4b52-848a-2575e1bad6cf_fruit.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Vegist</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Vegist</BasePath>
+      <RelativePath>Client/assets/images/79bac9c3-8f98-4b52-848a-2575e1bad6cf_fruit.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\79bac9c3-8f98-4b52-848a-2575e1bad6cf_fruit.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\81164b9c-32df-4b04-bd3c-b4a9ecc2f6f1_appleGreen.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>Vegist</SourceId>
@@ -30159,6 +30239,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\86b8c250-37e6-4e6b-8735-bcd2876f929c_appleGreen.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\8c2af339-f19e-4987-bed5-22333e6a7b42_cucumberHover.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>Vegist</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Vegist</BasePath>
+      <RelativePath>Client/assets/images/8c2af339-f19e-4987-bed5-22333e6a7b42_cucumberHover.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\8c2af339-f19e-4987-bed5-22333e6a7b42_cucumberHover.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\98b29249-5f97-4251-b4b9-13492f674fe4_appleYellow.jpeg))">
       <SourceType>Package</SourceType>
@@ -30240,6 +30336,38 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\9fc0329e-f4d5-4db6-a4f6-a38527ead6eb_cucumber2.webp))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\a1650db3-de8e-4343-b31a-f42de6531b64_cucumber2.webp))">
+      <SourceType>Package</SourceType>
+      <SourceId>Vegist</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Vegist</BasePath>
+      <RelativePath>Client/assets/images/a1650db3-de8e-4343-b31a-f42de6531b64_cucumber2.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\a1650db3-de8e-4343-b31a-f42de6531b64_cucumber2.webp))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\a39c8d9d-7a6f-4a20-a5aa-d9eb72b02ca6_0e087a0a-b1c2-46bc-a0a7-64986e519ff7_appleYellow.jpeg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Vegist</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Vegist</BasePath>
+      <RelativePath>Client/assets/images/a39c8d9d-7a6f-4a20-a5aa-d9eb72b02ca6_0e087a0a-b1c2-46bc-a0a7-64986e519ff7_appleYellow.jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\a39c8d9d-7a6f-4a20-a5aa-d9eb72b02ca6_0e087a0a-b1c2-46bc-a0a7-64986e519ff7_appleYellow.jpeg))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\a5693230-5ca9-4b7b-9156-c65164d14598_appleGreen.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>Vegist</SourceId>
@@ -30255,6 +30383,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\a5693230-5ca9-4b7b-9156-c65164d14598_appleGreen.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\a88dc670-43e2-471d-b100-0afeca6f49af_3b7cc2a1-d65c-4e1f-ac87-724e3333a20e_appleHover.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Vegist</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Vegist</BasePath>
+      <RelativePath>Client/assets/images/a88dc670-43e2-471d-b100-0afeca6f49af_3b7cc2a1-d65c-4e1f-ac87-724e3333a20e_appleHover.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\a88dc670-43e2-471d-b100-0afeca6f49af_3b7cc2a1-d65c-4e1f-ac87-724e3333a20e_appleHover.jpg))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\ae4b2c60-15e5-4a44-920c-8b23df739f23_appleHover.jpg))">
       <SourceType>Package</SourceType>
@@ -30528,6 +30672,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\cb813b82-e679-4bcc-bdd6-83e8de355a6e_appleGreen.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\cf6218cb-c616-47a2-8665-be9e22e8aab9_8c2af339-f19e-4987-bed5-22333e6a7b42_cucumberHover.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>Vegist</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Vegist</BasePath>
+      <RelativePath>Client/assets/images/cf6218cb-c616-47a2-8665-be9e22e8aab9_8c2af339-f19e-4987-bed5-22333e6a7b42_cucumberHover.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\cf6218cb-c616-47a2-8665-be9e22e8aab9_8c2af339-f19e-4987-bed5-22333e6a7b42_cucumberHover.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\d4a16425-ef1e-4636-acf2-86df2d409b11_appleYellow.jpeg))">
       <SourceType>Package</SourceType>
       <SourceId>Vegist</SourceId>
@@ -30559,6 +30719,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\dc7ccfb3-0a86-42a1-a6ca-1f920caea20c_appleGreen.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\ef3c5330-2b13-40f3-a4ab-2cc68c9846a4_cucumber.webp))">
+      <SourceType>Package</SourceType>
+      <SourceId>Vegist</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Vegist</BasePath>
+      <RelativePath>Client/assets/images/ef3c5330-2b13-40f3-a4ab-2cc68c9846a4_cucumber.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\ef3c5330-2b13-40f3-a4ab-2cc68c9846a4_cucumber.webp))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Client\assets\images\fe9346b3-0f79-4074-baa3-42a5d75c72e1_appleYellow.jpeg))">
       <SourceType>Package</SourceType>
