@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Vegist.Data;
 using Vegist.Extentions;
+using Vegist.Migrations;
 using Vegist.Models;
 
 namespace Vegist.Areas.Admin.Controllers
@@ -19,7 +20,7 @@ namespace Vegist.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var sliders = await _context.Sliders
-                                            .Include(x => x.sliderImages)
+                                            .Include(x => x.ProductImages)
                                             .Where(x => !x.IsDeleted)
                                             .ToListAsync();
             return View(sliders);
@@ -34,109 +35,39 @@ namespace Vegist.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Slider slider)
         {
-            if (_context.Sliders.Any(p => p.Name == slider.Name))
-            {
-                ModelState.AddModelError("", "slider already exists");
+            if (!ModelState.IsValid)
                 return View(slider);
-            }
-            slider.ProductImages = new List<ProductImage>();
-            if (slider.Files != null)
+            if (!slider.MainFile.CheckFileType("image"))
             {
-                foreach (var file in slider.Files)
-                {
-
-                    if (!file.CheckFileSize(2))
-                    {
-                        ModelState.AddModelError("Files", "Files cannot be more than 2mb");
-                        return View(slider);
-                    }
-
-
-                    if (!file.CheckFileType("image"))
-                    {
-                        ModelState.AddModelError("Files", "Files must be image type!");
-                        return View(slider);
-                    }
-
-                    var filename = await file.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
-                    var additionalsliderImages = Createslider(filename, false, false, slider);
-
-                    slider.ProductImages.Add(additionalsliderImages);
-
-                }
+                ModelState.AddModelError("", "Invalid File");
+                return View(slider);
             }
             if (!slider.MainFile.CheckFileSize(2))
             {
-                ModelState.AddModelError("MainFile", "Files cannot be more than 2mb");
+                ModelState.AddModelError("", "Invalid File Size");
                 return View(slider);
             }
+            var isExist = await _context.Sliders.AnyAsync(x => x.Name.ToLower() == slider.Name.ToLower());
 
-
-            if (!slider.MainFile.CheckFileType("image"))
+            if (isExist)
             {
-                ModelState.AddModelError("MainFile", "Files must be image type!");
-                return View(slider);
+                ModelState.AddModelError("Name", "slider name is already exist");
+                return View();
+
             }
+            string uniqueFileName = await slider.MainFile.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
 
-            var mainFileName = await slider.MainFile.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
-            var mainsliderImageCreate = Createslider(mainFileName, false, true, slider);
+            Slider newSlider = new Slider
+            {
+                Name = slider.Name,
+                Description = slider.Description,
+            };
 
-            slider.ProductImages.Add(mainsliderImageCreate);
-
-
-
-            await _context.Sliders.AddAsync(slider);
-
+            await _context.Sliders.AddAsync(newSlider);
             await _context.SaveChangesAsync();
+
             return RedirectToAction("Index");
         }
-
-        public ProductImage CreateProduct(string url, bool isHover, bool isMain, Product product)
-        {
-            return new ProductImage
-            {
-                Url = url,
-                IsHover = isHover,
-                IsMain = isMain,
-                Product = product
-            };
-        }
-
-        //public async Task<IActionResult> Create(Slider Slider)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return View(Slider);
-        //    if (!Slider.MainFile.CheckFileType("image"))
-        //    {
-        //        ModelState.AddModelError("", "Invalid File");
-        //        return View(Slider);
-        //    }
-        //    if (!Slider.MainFile.CheckFileSize(2))
-        //    {
-        //        ModelState.AddModelError("", "Invalid File Size");
-        //        return View(Slider);
-        //    }
-        //    var isExist = await _context.Categories.AnyAsync(x => x.Name.ToLower() == Slider.Name.ToLower());
-
-        //    if (isExist)
-        //    {
-        //        ModelState.AddModelError("Name", "Slider name is already exist");
-        //        return View();
-
-        //    }
-        //    string uniqueFileName = await Slider.MainFile.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
-
-        //    Slider newSlider = new Slider
-        //    {
-        //        Name = Slider.Name,
-        //        Description = Slider.Description,
-        //    };
-
-        //    await _context.Sliders.AddAsync(newSlider);
-        //    await _context.SaveChangesAsync();
-
-        //    return RedirectToAction("Index");
-        //}
 
         public async Task<IActionResult> Edit(int? id)
         {

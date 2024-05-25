@@ -329,7 +329,7 @@ namespace Vegist.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("SliderId")
+                    b.Property<int?>("SliderId")
                         .HasColumnType("int");
 
                     b.Property<string>("Url")
@@ -529,9 +529,7 @@ namespace Vegist.Migrations
 
                     b.HasOne("Vegist.Models.Slider", "Slider")
                         .WithMany("ProductImages")
-                        .HasForeignKey("SliderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SliderId");
 
                     b.Navigation("Category");
 
