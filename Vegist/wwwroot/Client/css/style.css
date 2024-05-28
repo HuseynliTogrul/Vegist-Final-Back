@@ -187,7 +187,7 @@ header .line {
 .CategoryList {
     border: 1px solid #e2e2e2;
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     border-radius: 4px;
     background-color: #fff;
     width: 100%;
