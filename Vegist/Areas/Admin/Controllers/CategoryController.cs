@@ -57,11 +57,12 @@ namespace Vegist.Areas.Admin.Controllers
                 return View();
 
             }
-            string uniqueFileName = await category.File.SaveFileAsync(_env.WebRootPath,"Client", "assets", "images");
+            string uniqueFileName = await category.File.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
 
             Category newCategory = new Category
             {
                 Name = category.Name,
+                //File = category.File,
             };
 
             await _context.Categories.AddAsync(newCategory);
@@ -106,7 +107,7 @@ namespace Vegist.Areas.Admin.Controllers
                     return View(category);
                 }
 
-                
+
                 var uniqueFileName = await category.File.
                     SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
 

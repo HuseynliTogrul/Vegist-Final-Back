@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "6fkFkjqUbqNNwuijBRWdKGVGt7UCGC4lsXd4uQqpcOU=",
+  "Hash": "a5oEtQAHsdON3Wb0nlVL9iUkRDI8L6S+Yxb19wPOCxY=",
   "Source": "Vegist",
   "BasePath": "_content/Vegist",
   "Mode": "Default",
@@ -32689,6 +32689,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Client\\assets\\images\\cf6218cb-c616-47a2-8665-be9e22e8aab9_8c2af339-f19e-4987-bed5-22333e6a7b42_cucumberHover.png"
+    },
+    {
+      "Identity": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\cucumber.webp",
+      "SourceId": "Vegist",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\",
+      "BasePath": "_content/Vegist",
+      "RelativePath": "Client/assets/images/cucumber.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Client\\assets\\images\\cucumber.webp"
     },
     {
       "Identity": "C:\\Users\\acer\\Desktop\\Vegist\\Vegist\\wwwroot\\Client\\assets\\images\\d4a16425-ef1e-4636-acf2-86df2d409b11_appleYellow.jpeg",
