@@ -8,16 +8,16 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="~/Client/css/style.css">
-    <link rel="stylesheet" href="~/Client/css/product.css">@*
+    <link rel="stylesheet" href="~/Client/css/product.css">
     <link rel="stylesheet" href="~/Client/css/basket.css">
 
     <link rel="stylesheet" href="~/Client/css/about.css">
     <link rel="stylesheet" href="~/Client/css/blog.css">
     <link rel="stylesheet" href="~/Client/css/blogBrand.css">
     <link rel="stylesheet" href="~/Client/css/contact.css">
-    <link rel="stylesheet" href="~/Client/css/login.css"> *@
+    <link rel="stylesheet" href="~/Client/css/login.css">
     <link rel="stylesheet" href="~/Client/css/shop.css">
-    @* <link rel="stylesheet" href="~/Client/css/wishlist.css"> *@
+    <link rel="stylesheet" href="~/Client/css/wishlist.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +27,7 @@
 </head>
 
 <body id="body">
-    <div class="overlay hidden"></div>
+    <div class="overlay"></div>
     <header>
         <div class="header-area">
             <div class="container">
@@ -64,7 +64,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="./contact.html">
+                                <a asp-controller="Contact" asp-action="Default">
                                     <p>Contact us</p>
                                     <!-- <i class="fa-solid fa-chevron-down"></i> -->
                                 </a>
@@ -79,10 +79,16 @@
                             <Li class="searchIcon">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </Li>
-                            <Li>
-                                <a href="./login.html">
-                                    <i class="fa-regular fa-user"></i>
-                                </a>
+                            <Li class="loginHeader">
+                                <i class="fa-regular fa-user UserLogin"></i>
+                                <div class="loginHeaderA">
+                                    <a href="./login.html">
+                                        <p class="MyLogin">Login</p>
+                                    </a>
+                                    <a asp-controller="Dashboard" asp-action="Index" asp-area="Admin">
+                                        <p class="AdminLogin">Go to Admin</p>
+                                    </a>
+                                </div>
                             </Li>
                             <Li>
                                 <a href="./wishlist.html" class="wish">
@@ -91,7 +97,7 @@
                                 </a>
                             </Li>
                             <Li>
-                                <a asp-controller="Basket" asp-action="Default">
+                                <a asp-controller="Basket" asp-action="Detail">
                                     <i class="fa-solid fa-cart-shopping"></i>
                                     <span>0</span>
                                 </a>
@@ -152,8 +158,8 @@
                                 <p>Haldi powder</p>
                             </div>
                         </div>
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
+                        <!-- <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div> -->
                     </div>
                 </div>
             </div>
@@ -196,7 +202,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./about.html">
+                        <a asp-controller="About" asp-action="Dashboard">
                             <p>About us</p>
                         </a>
                     </li>
@@ -209,7 +215,6 @@
             </div>
         </div>
     </header>
-
 
     @RenderBody()
 
@@ -321,11 +326,10 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script src="~/Client/js/app.js"></script>
+    <script src="~/Client/js/product.js"></script>
     <script src="~/Client/js/shop.js"></script>
-
     <script src="~/Client/js/basket.js"></script>
     <script src="~/Client/js/login.js"></script>
-    <script src="~/Client/js/product.js"></script>
 
 </body>
 

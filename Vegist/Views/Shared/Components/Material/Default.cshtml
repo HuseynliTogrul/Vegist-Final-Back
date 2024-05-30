@@ -1,0 +1,13 @@
+﻿@model List<Material>
+
+
+@foreach (var material in Model)
+{
+    <Li>
+        <div class="checkBoxFilter">
+            <input type="checkbox" name="material" id="">
+            <span>@material.Name</span>
+        </div>
+        <p>(@material.ProductMaterial.Count)</p>
+    </Li>
+}

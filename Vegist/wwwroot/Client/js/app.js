@@ -1,5 +1,8 @@
 "use strict";
 
+const loginHeader = document.querySelector(".loginHeader");
+const loginHeaderA = document.querySelector(".loginHeaderA");
+
 const categoryList = document.querySelector(".CategoryList");
 const CategoryHeader = document.querySelector(".CategoryHeader");
 
@@ -26,6 +29,11 @@ const minus = document.querySelectorAll(".fa-minus");
 const plus = document.querySelectorAll(".fa-plus");
 
 const scroll = document.querySelector(".scroll")
+const overlay = document.querySelector(".overlay")
+
+const shopFilter = document.querySelector(".shopFilter");
+const shopLeft = document.querySelector(".shop-left");
+const closeIcon = document.querySelector(".closeIcon i");
 
 
 
@@ -37,6 +45,10 @@ window.addEventListener("scroll", () => {
   } else {
     scroll.classList.remove("active")
   }
+})
+
+scroll.addEventListener("click", () => {
+  window.scrollTo(0, 0);
 })
 
 
@@ -52,11 +64,13 @@ CategoryHeader.addEventListener("click", () => {
 searchIcon.addEventListener("click", () => {
   searchSection.style.display = "block";
   document.body.style.overflow = 'hidden';
+  overlay.style.display = "block"
 })
 
 closeSearch.addEventListener('click', () => {
   searchSection.style.display = 'none';
   document.body.style.overflow = 'auto';
+  overlay.style.display = "none"
 })
 
 window.onkeydown = function (event) {
@@ -100,9 +114,9 @@ var swiper = new Swiper(".mySwiper1", {
   slidesPerView: 1,
   spaceBetween: 30,
   loop: true,
-  navigation: {
-    prevEl: ".swiper-button-prev",
-    nextEl: ".swiper-button-next",
+  autoplay: {
+    delay: 10000,
+    disableOnInteraction: false
   },
   breakpoints: {
     768: {
@@ -165,6 +179,17 @@ var swiper = new Swiper(".mySwiper2", {
 });
 
 
+//userLogin
+
+loginHeader.addEventListener("click", () => {
+    if (loginHeaderA.style.display === "block") {
+        loginHeaderA.style.display = "none"
+    } else {
+        loginHeaderA.style.display = "block"
+    }
+})
+
+
 // Footer
 
 listHeader.forEach(header => {
@@ -180,6 +205,30 @@ listHeader.forEach(header => {
       minus.style.display = 'none';
     }
   });
+});
+
+
+//Shop page js
+//Filter
+
+shopFilter.addEventListener("click", () => {
+  shopLeft.style.display = "block";
+  document.body.style.overflow = 'hidden';
+  overlay.classList.remove("hidden");
+})
+
+closeIcon.addEventListener("click", () => {
+  shopLeft.style.display = "none";
+  document.body.style.overflow = 'auto';
+  overlay.classList.add("hidden");
+})
+
+document.addEventListener('keydown', function (event) {
+  const key = event.key;
+  if (key === "Escape") {
+    shopLeft.style.display = "none";
+    overlay.classList.add("hidden");
+  }
 });
 
 

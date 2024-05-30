@@ -5,16 +5,17 @@ namespace Vegist.Models
 {
     public class ProductImage : BaseEntity
     {
-        public string Url { get; set; } = null!;
+        public string Url { get; set; } = string.Empty;
         [NotMapped]
-        public IFormFile File { get; set; } = null!;
+        public IFormFile? File { get; set; }
         public bool IsMain { get; set; }
         public bool IsHover { get; set; }
-        public int ProductId { get; set; }
-        public Product Product { get; set; } = null!;
+        public int? ProductId { get; set; }
+        public Product? Product { get; set; }
         public int? CategoryId { get; set; }
-        public Category Category { get; set; } = null!;
+        public Category? Category { get; set; }
         public int? SliderId { get; set; }
-        public Slider Slider { get; set; } = null!;
+        public Slider? Slider { get; set; }
+        public string ImagePath { get; set; } = string.Empty;
     }
 }

@@ -127,6 +127,20 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pMaterial"
+                   aria-expanded="true" aria-controls="pMaterial">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Product Materials</span>
+                </a>
+                <div id="pMaterial" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        @* <h6 class="collapse-header">Custom Components:</h6> *@
+                        <a class="collapse-item" asp-controller="ProductMaterial" asp-action="Index">Product Materials List</a>
+                        <a class="collapse-item" asp-controller="ProductMaterial" asp-action="Create">Product Materials Create</a>
+                    </div>
+                </div>
+            </li>
 
         </ul>
         <!-- End of Sidebar -->

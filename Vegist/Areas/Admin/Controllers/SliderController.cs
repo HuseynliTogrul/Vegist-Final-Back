@@ -36,37 +36,65 @@ namespace Vegist.Areas.Admin.Controllers
         public async Task<IActionResult> Create(Slider slider)
         {
             if (!ModelState.IsValid)
-                return View(slider);
-            if (!slider.MainFile.CheckFileType("image"))
             {
-                ModelState.AddModelError("", "Invalid File");
                 return View(slider);
             }
-            if (!slider.MainFile.CheckFileSize(2))
+
+            if (slider.Files != null)
             {
-                ModelState.AddModelError("", "Invalid File Size");
+                var fileError = await ProcessFileAsync(slider);
+                if (!string.IsNullOrEmpty(fileError))
+                {
+                    ModelState.AddModelError("File", fileError);
+                    return View(slider);
+                }
+            }
+
+            if (await SliderExistsAsync(slider.Name))
+            {
+                ModelState.AddModelError("Name", "Slider name already exists.");
                 return View(slider);
             }
-            var isExist = await _context.Sliders.AnyAsync(x => x.Name.ToLower() == slider.Name.ToLower());
 
-            if (isExist)
-            {
-                ModelState.AddModelError("Name", "slider name is already exist");
-                return View();
-
-            }
-            string uniqueFileName = await slider.MainFile.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
-
-            Slider newSlider = new Slider
-            {
-                Name = slider.Name,
-                Description = slider.Description,
-            };
-
-            await _context.Sliders.AddAsync(newSlider);
+            await _context.Sliders.AddAsync(slider);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
+        }
+
+        private async Task<string> ProcessFileAsync(Slider slider)
+        {
+            if (!slider.Files.CheckFileType("image"))
+            {
+                return "Invalid file type. Only image files are allowed.";
+            }
+
+            if (!slider.Files.CheckFileSize(2))
+            {
+                return "Invalid file size. Maximum allowed size is 2 MB.";
+            }
+
+            string uniqueFileName = await slider.Files.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images").ConfigureAwait(false);
+
+            var product = await _context.Products.FirstOrDefaultAsync();
+            if (product == null)
+            {
+                return "No valid product found. Ensure there is at least one product in the database.";
+            }
+
+            slider.ProductImages.Add(new ProductImage
+            {
+                ImagePath = uniqueFileName,
+                SliderId = slider.Id,
+                Url = uniqueFileName,
+            });
+
+            return null;
+        }
+
+        private async Task<bool> SliderExistsAsync(string sliderName)
+        {
+            return await _context.Sliders.AnyAsync(x => x.Name.ToLower() == sliderName.ToLower()).ConfigureAwait(false);
         }
 
         public async Task<IActionResult> Edit(int? id)
@@ -92,21 +120,21 @@ namespace Vegist.Areas.Admin.Controllers
                                                         .AsNoTracking()
                                                         .FirstOrDefaultAsync(x => x.Id == id);
             if (existsSlider == null) return NotFound();
-            if (Slider.MainFile != null)
+            if (Slider.Files != null)
             {
-                if (!Slider.MainFile.CheckFileSize(2))
+                if (!Slider.Files.CheckFileSize(2))
                 {
                     ModelState.AddModelError("File", "File size more than 2mb");
                     return View(Slider);
                 }
-                if (!Slider.MainFile.CheckFileType("image"))
+                if (!Slider.Files.CheckFileType("image"))
                 {
                     ModelState.AddModelError("File", "File type is incorrect");
                     return View(Slider);
                 }
 
 
-                var uniqueFileName = await Slider.MainFile.
+                var uniqueFileName = await Slider.Files.
                     SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
 
                 existsSlider.Name = Slider.Name;
@@ -128,19 +156,27 @@ namespace Vegist.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            Slider? Slider = await _context.Sliders.FirstOrDefaultAsync(x => x.Id == id);
-            if (Slider is null)
+            Slider? slider = await _context.Sliders.FirstOrDefaultAsync(x => x.Id == id);
+            if (slider is null)
             {
                 return NotFound();
             }
-            _context.Sliders.Remove(Slider);
-            var path = Path.Combine(_env.WebRootPath, "Client", "assets", "images");
-            if (System.IO.File.Exists(path))
+
+            var productImages = await _context.ProductImages.Where(pi => pi.SliderId == slider.Id).ToListAsync();
+            foreach (var productImage in productImages)
             {
-                System.IO.File.Delete(path);
+                var imagePath = Path.Combine(_env.WebRootPath, "Client", "assets", "images", productImage.ImagePath);
+                if (System.IO.File.Exists(imagePath))
+                {
+                    System.IO.File.Delete(imagePath);
+                }
+                _context.ProductImages.Remove(productImage);
             }
-            Slider.IsDeleted = true;
+
+            slider.IsDeleted = true;
+            _context.Sliders.Remove(slider);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
     }

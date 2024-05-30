@@ -152,6 +152,10 @@
     transition: all 0.3s linear;
 }
 
+.detail-btns button a{
+    color: white;
+}
+
 .detail-btns button:first-child {
     background: #91b656;
 }

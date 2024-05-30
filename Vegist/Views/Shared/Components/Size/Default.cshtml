@@ -1,0 +1,13 @@
+﻿@model List<Size>
+
+
+@foreach (var size in Model)
+{
+    <Li>
+        <div class="checkBoxFilter">
+            <input type="checkbox" name="size" id="">
+            <span>@size.Name</span>
+        </div>
+        <p>(@size.ProductSize.Count)</p>
+    </Li>
+}

@@ -5,7 +5,7 @@
         public static async Task<string> SaveFileAsync(this IFormFile file, string root, string Client, string assets, string folderName)
         {
             string uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-            string path = Path.Combine(root, Client, assets, folderName, uniqueFileName); 
+            string path = Path.Combine(root, Client, assets, folderName, uniqueFileName);
 
 
             using FileStream fs = new FileStream(path, FileMode.Create);
@@ -33,9 +33,9 @@
             return true;
         }
 
-        public static void DeleteFile(this IFormFile file, string root, string client, string assets, string folderName, string fileName)
+        public static void DeleteFile(this IFormFile file, string root, string Client, string assets, string folderName, string fileName)
         {
-            string path = Path.Combine(root, client, assets, folderName, fileName);
+            string path = Path.Combine(root, Client, assets, folderName, fileName);
             if (System.IO.File.Exists(path))
             {
                 System.IO.File.Delete(path);

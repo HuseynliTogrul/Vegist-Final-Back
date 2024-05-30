@@ -33,42 +33,69 @@ namespace Vegist.Areas.Admin.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> Create(Category category)
         {
             if (!ModelState.IsValid)
-                return View(category);
-            if (!category.File.CheckFileType("image"))
             {
-                ModelState.AddModelError("", "Invalid File");
                 return View(category);
             }
-            if (!category.File.CheckFileSize(2))
+
+            if (category.File != null)
             {
-                ModelState.AddModelError("", "Invalid File Size");
+                var fileError = await ProcessFileAsync(category);
+                if (!string.IsNullOrEmpty(fileError))
+                {
+                    ModelState.AddModelError("File", fileError);
+                    return View(category);
+                }
+            }
+
+            if (await CategoryExistsAsync(category.Name))
+            {
+                ModelState.AddModelError("Name", "Category name already exists");
                 return View(category);
             }
-            var isExist = await _context.Categories.AnyAsync(x => x.Name.ToLower() == category.Name.ToLower());
 
-            if (isExist)
-            {
-                ModelState.AddModelError("Name", "category name is already exist");
-                return View();
-
-            }
-            string uniqueFileName = await category.File.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
-
-            Category newCategory = new Category
-            {
-                Name = category.Name,
-                //File = category.File,
-            };
-
-            await _context.Categories.AddAsync(newCategory);
+            await _context.Categories.AddAsync(category);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
+        }
+
+        private async Task<string> ProcessFileAsync(Category category)
+        {
+            if (!category.File.CheckFileType("image"))
+            {
+                return "Invalid file type. Only image files are allowed.";
+            }
+
+            if (!category.File.CheckFileSize(2))
+            {
+                return "Invalid file size. Maximum allowed size is 2 MB.";
+            }
+
+            string uniqueFileName = await category.File.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images").ConfigureAwait(false);
+
+            var product = await _context.Products.FirstOrDefaultAsync();
+            if (product == null)
+            {
+                return "No valid product found. Ensure there is at least one product in the database.";
+            }
+
+            category.ProductImages.Add(new ProductImage
+            {
+                ImagePath = uniqueFileName,
+                Category = category,
+                ProductId = product.Id
+            });
+
+            return null;
+        }
+
+        private async Task<bool> CategoryExistsAsync(string categoryName)
+        {
+            return await _context.Categories.AnyAsync(x => x.Name.ToLower() == categoryName.ToLower()).ConfigureAwait(false);
         }
 
         public async Task<IActionResult> Edit(int? id)
@@ -135,14 +162,22 @@ namespace Vegist.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            _context.Categories.Remove(category);
-            var path = Path.Combine(_env.WebRootPath, "Client", "assets", "images");
-            if (System.IO.File.Exists(path))
+
+            var productImages = await _context.ProductImages.Where(pi => pi.CategoryId == category.Id).ToListAsync();
+            foreach (var productImage in productImages)
             {
-                System.IO.File.Delete(path);
+                var imagePath = Path.Combine(_env.WebRootPath, "Client", "assets", "images", productImage.ImagePath);
+                if (System.IO.File.Exists(imagePath))
+                {
+                    System.IO.File.Delete(imagePath);
+                }
+                _context.ProductImages.Remove(productImage);
             }
+
             category.IsDeleted = true;
+            _context.Categories.Remove(category);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
     }

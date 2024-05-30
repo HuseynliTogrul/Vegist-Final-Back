@@ -1,0 +1,61 @@
+﻿<main>
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-list">
+                <ul>
+                    <li>
+                        <a asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li>
+                        <p>/ Account</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="loginSection">
+        <div class="container">
+            <div class="resetPassword" id="reset">
+                <div class="login-left">
+                    <h2>Reset your password</h2>
+                    <p>We will send you an email to reset your password.</p>
+                    <div class="emailForm">
+                        <label for="fname">Email</label>
+                        <input type="text" id="fname" name="fname" placeholder="Email">
+                    </div>
+                    <button>Submit</button>
+                    <a href="#">Cancel</a>
+                </div>
+            </div>
+            <div class="login" id="login">
+                <div class="login-left">
+                    <h2>Login</h2>
+                    <p>Please login below account detail</p>
+                    <div class="loginForm">
+                        <label for="fname">Email</label>
+                        <input type="text" id="fname" name="fname" placeholder="Email">
+                    </div>
+                    <div class="loginForm">
+                        <label for="lname">Password</label>
+                        <input type="text" id="lname" name="lname" placeholder="Password">
+                    </div>
+                    <button>Sign in</button>
+                    <a href="#">Forgot your password?</a>
+                </div>
+                <div class="login-right">
+                    <div class="loginAccount">
+                        <h4>Don't have an account?</h4>
+                        <a href="./createAccount.html">Create account</a>
+                    </div>
+                    <p>* Terms & conditions.</p>
+                    <div class="loginPrivacy">
+                        <p>
+                            Your privacy and security are important to us. For more information on how we use your
+                            data read our <a href="">privacy policy</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

@@ -15,7 +15,7 @@ namespace Vegist.Data
         public DbSet<Material> Materials { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<ProductSize> ProductSizes { get; set; }
-        public DbSet<ProductMaterial> ProductMaterial { get; set; }
+        public DbSet<ProductMaterial> ProductMaterials { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

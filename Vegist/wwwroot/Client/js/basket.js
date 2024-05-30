@@ -10,6 +10,10 @@ plusCount.addEventListener("click", () => {
     count++;
   }
   counter.value = count;
+
+  if(count === 10){
+    plusCount.style.cursor = "no-drop";
+  }
 })
 
 minusCount.addEventListener("click", () => {
@@ -17,7 +21,13 @@ minusCount.addEventListener("click", () => {
     count--;
   }
   counter.value = count;
+
+  if(count === 1){
+    minusCount.style.cursor = "no-drop";
+  }
 })
+
+
 
 ///////////////////////////
 

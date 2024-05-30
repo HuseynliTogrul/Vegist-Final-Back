@@ -1,0 +1,55 @@
+﻿@model PaginateVm
+@foreach (var product in Model.Products)
+{
+    <div class="productItem">
+        <div class="productImg">
+            <span>10%</span>
+            <a asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id">
+                <img src="~/Client/assets/images/@(product.ProductImages.FirstOrDefault(x=>x.IsMain).Url)" alt="product1">
+                <img src="~/Client/assets/images/@(product.ProductImages.FirstOrDefault(x=>x.IsHover).Url)" class="hover DisplayNone" alt="productHover">
+            </a>
+
+            <div class="productIcon">
+                <i class="fa-regular fa-heart"></i>
+                <a asp-controller="Basket" asp-action="Default">
+                    <i class="fa-solid fa-cart-shopping shopBasket"></i>
+                </a>
+                <a asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id">
+                    <i class="fa-regular fa-eye"></i>
+                </a>
+            </div>
+        </div>
+        <div class="productDesc">
+            <p>@product.Title</p>
+            <div class="rating">
+                <ul>
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        <li>
+                            @if (i <= product.Rating)
+                            {
+                                <i class="fa-solid fa-star"></i>
+                            }
+                            else
+                            {
+                                <i class="fa-regular fa-star"></i>
+                            }
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="productPrice">
+                @if (product.DiscPrice > 0)
+                {
+                    <span>₼@product.DiscPrice</span>
+                    <span class="oldPrice">₼@product.SellPrice</span>
+                }
+                else
+                {
+                    <span>₼@product.SellPrice</span>
+                }
+            </div>
+        </div>
+    </div>
+}
+

@@ -33,7 +33,16 @@
                                         <tr class="odd">
                                             <td class="sorting_1">@Slider.Name</td>
                                             <td class="sorting_1">@Slider.Description</td>
-                                            <td class="sorting_1">@Slider.ProductImages</td>
+                                            <td class="sorting_1">
+                                                @if (Slider.ProductImages != null && Slider.ProductImages.Any())
+                                                {
+                                                    <img src="@Url.Content($"~/Client/assets/images/{Slider.ProductImages.First().ImagePath}")" alt="Slider Image" style="width: 100px; height: auto;" />
+                                                }
+                                                else
+                                                {
+                                                    <span>No image available</span>
+                                                }
+                                            </td>
                                             <td><a class="btn btn-danger" asp-controller="Slider" asp-action="Delete" asp-route-id="@Slider.Id">Delete</a></td>
                                             <td><a class="btn btn-warning" asp-controller="Slider" asp-action="Edit" asp-route-id="@Slider.Id">Edit</a></td>
                                         </tr>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Vegist.Controllers;
 using Vegist.Data;
 using Vegist.Extentions;
 using Vegist.Models;
@@ -9,7 +10,6 @@ namespace Vegist.Areas.Admin.Controllers
 {
     [Area("Admin")]
     //[Authorize(Roles = "Admin")]
-
     public class ProductController : Controller
     {
         private readonly AppDbContext _context;
@@ -31,10 +31,10 @@ namespace Vegist.Areas.Admin.Controllers
             return View(products);
         }
 
+
         public async Task<IActionResult> Create()
         {
             ViewBag.Categories = await _context.Categories.ToListAsync();
-
             return View();
         }
 
@@ -44,147 +44,73 @@ namespace Vegist.Areas.Admin.Controllers
             if (_context.Products.Any(p => p.Title == product.Title))
             {
                 ModelState.AddModelError("", "Product already exists");
+                ViewBag.Categories = await _context.Categories.ToListAsync();
                 return View(product);
             }
+
             product.ProductImages = new List<ProductImage>();
+
             if (product.Files != null)
             {
                 foreach (var file in product.Files)
                 {
-                    if (!file.CheckFileSize(2))
+                    var errorMessage = await ProcessFileAsync(file, product, isHover: false, isMain: false);
+                    if (errorMessage != null)
                     {
-                        ModelState.AddModelError("Files", "Files cannot be more than 2mb");
+                        ModelState.AddModelError("Files", errorMessage);
+                        ViewBag.Categories = await _context.Categories.ToListAsync();
                         return View(product);
                     }
-
-                    if (!file.CheckFileType("image"))
-                    {
-                        ModelState.AddModelError("Files", "Files must be image type!");
-                        return View(product);
-                    }
-
-                    var filename = await file.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
-                    var additionalProductImages = CreateProduct(filename, false, false, product);
-
-                    product.ProductImages.Add(additionalProductImages);
                 }
             }
-            if (!product.MainFile.CheckFileSize(2))
+
+            var mainFileErrorMessage = await ProcessFileAsync(product.MainFile, product, isHover: false, isMain: true);
+            if (mainFileErrorMessage != null)
             {
-                ModelState.AddModelError("MainFile", "Files cannot be more than 2mb");
+                ModelState.AddModelError("MainFile", mainFileErrorMessage);
+                ViewBag.Categories = await _context.Categories.ToListAsync();
                 return View(product);
             }
 
-
-            if (!product.MainFile.CheckFileType("image"))
+            var hoverFileErrorMessage = await ProcessFileAsync(product.HoverFile, product, isHover: true, isMain: false);
+            if (hoverFileErrorMessage != null)
             {
-                ModelState.AddModelError("MainFile", "Files must be image type!");
+                ModelState.AddModelError("HoverFile", hoverFileErrorMessage);
+                ViewBag.Categories = await _context.Categories.ToListAsync();
                 return View(product);
             }
-
-            var mainFileName = await product.MainFile.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
-            var mainProductImageCreate = CreateProduct(mainFileName, false, true, product);
-
-            product.ProductImages.Add(mainProductImageCreate);
-
-            if (!product.HoverFile.CheckFileSize(2))
-            {
-                ModelState.AddModelError("HoverFile", "Files cannot be more than 2mb");
-                return View(product);
-            }
-
-
-            if (!product.HoverFile.CheckFileType("image"))
-            {
-                ModelState.AddModelError("HoverFile", "Files must be image type!");
-                return View(product);
-            }
-
-            var hoverFileName = await product.HoverFile.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
-            var hoverProductImageCreate = CreateProduct(hoverFileName, true, false, product);
-            product.ProductImages.Add(hoverProductImageCreate);
 
             await _context.Products.AddAsync(product);
-
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
-            //if (_context.Products.Any(p => p.Title == product.Title))
-            //{
-            //    ModelState.AddModelError("", "Product already exists");
-            //    return View(product);
-            //}
-            //product.ProductImages = new List<ProductImage>();
-            //if (product.Files != null)
-            //{
-            //    foreach (var file in product.Files)
-            //    {
-
-            //        if (!file.CheckFileSize(2))
-            //        {
-            //            ModelState.AddModelError("Files", "Files cannot be more than 2mb");
-            //            return View(product);
-            //        }
-
-
-            //        if (!file.CheckFileType("image"))
-            //        {
-            //            ModelState.AddModelError("Files", "Files must be image type!");
-            //            return View(product);
-            //        }
-
-            //        var filename = await file.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
-            //        var additionalProductImages = CreateProduct(filename, false, false, product);
-
-            //        product.ProductImages.Add(additionalProductImages);
-
-            //    }
-            //}
-            //if (!product.MainFile.CheckFileSize(2))
-            //{
-            //    ModelState.AddModelError("MainFile", "Files cannot be more than 2mb");
-            //    return View(product);
-            //}
-
-
-            //if (!product.MainFile.CheckFileType("image"))
-            //{
-            //    ModelState.AddModelError("MainFile", "Files must be image type!");
-            //    return View(product);
-            //}
-
-            //var mainFileName = await product.MainFile.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
-            //var mainProductImageCreate = CreateProduct(mainFileName, false, true, product);
-
-            //product.ProductImages.Add(mainProductImageCreate);
-
-            //if (!product.HoverFile.CheckFileSize(2))
-            //{
-            //    ModelState.AddModelError("HoverFile", "Files cannot be more than 2mb");
-            //    return View(product);
-            //}
-
-
-            //if (!product.HoverFile.CheckFileType("image"))
-            //{
-            //    ModelState.AddModelError("HoverFile", "Files must be image type!");
-            //    return View(product);
-            //}
-
-            //var hoverFileName = await product.HoverFile.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
-            //var hoverProductImageCreate = CreateProduct(hoverFileName, true, false, product);
-            //product.ProductImages.Add(hoverProductImageCreate);
-
-
-
-            //await _context.Products.AddAsync(product);
-
-            //await _context.SaveChangesAsync();
-
-            //return RedirectToAction("Index");
         }
 
-        public ProductImage CreateProduct(string url, bool isHover, bool isMain, Product product)
+        private async Task<string> ProcessFileAsync(IFormFile file, Product product, bool isHover, bool isMain)
+        {
+            if (file == null)
+            {
+                return null; 
+            }
+
+            if (!file.CheckFileSize(2))
+            {
+                return "Files cannot be more than 2MB";
+            }
+
+            if (!file.CheckFileType("image"))
+            {
+                return "Files must be image type!";
+            }
+
+            var fileName = await file.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
+            var productImage = CreateProductImage(fileName, isHover, isMain, product);
+            product.ProductImages.Add(productImage);
+
+            return null;
+        }
+
+        private ProductImage CreateProductImage(string url, bool isHover, bool isMain, Product product)
         {
             return new ProductImage
             {
@@ -238,7 +164,7 @@ namespace Vegist.Areas.Admin.Controllers
                         return View(product);
                     }
                     var filename = await file.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
-                    var additionalProductImages = CreateProduct(filename, false, false, product);
+                    var additionalProductImages = CreateProductImage(filename, false, false, product);
                     existProduct.ProductImages.Add(additionalProductImages);
                 }
             }
@@ -259,7 +185,7 @@ namespace Vegist.Areas.Admin.Controllers
 
                 product.MainFile.DeleteFile(_env.WebRootPath, "Client", "assets", "images", existProduct.ProductImages.FirstOrDefault(x => x.IsMain).Url);
                 var mainFileName = await product.MainFile.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
-                var mainProductImage = CreateProduct(mainFileName, false, false, product);
+                var mainProductImage = CreateProductImage(mainFileName, false, false, product);
                 existProduct.ProductImages.Add(mainProductImage);
 
             }
@@ -277,10 +203,13 @@ namespace Vegist.Areas.Admin.Controllers
                     ModelState.AddModelError("HoverFile", "Files must be image type!");
                     return View(product);
                 }
-
-                product.HoverFile.DeleteFile(_env.WebRootPath, "Client", "assets", "images", existProduct.ProductImages.FirstOrDefault(x => x.IsHover).Url);
+                var hoverImage = existProduct.ProductImages.FirstOrDefault(x => x.IsHover);
+                if (hoverImage != null)
+                {
+                    product.HoverFile.DeleteFile(_env.WebRootPath, "Client", "assets", "images", hoverImage.Url);
+                }
                 var hoverFileName = await product.HoverFile.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
-                var hoverProductImageCreate = CreateProduct(hoverFileName, true, false, product);
+                var hoverProductImageCreate = CreateProductImage(hoverFileName, true, false, product);
                 existProduct.ProductImages.Add(hoverProductImageCreate);
             }
 

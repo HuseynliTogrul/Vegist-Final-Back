@@ -236,6 +236,10 @@ namespace Vegist.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -317,6 +321,10 @@ namespace Vegist.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -326,7 +334,7 @@ namespace Vegist.Migrations
                     b.Property<bool>("IsMain")
                         .HasColumnType("bit");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int?>("SliderId")
@@ -373,7 +381,7 @@ namespace Vegist.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductMaterial");
+                    b.ToTable("ProductMaterials");
                 });
 
             modelBuilder.Entity("Vegist.Models.ProductSize", b =>
@@ -523,9 +531,7 @@ namespace Vegist.Migrations
 
                     b.HasOne("Vegist.Models.Product", "Product")
                         .WithMany("ProductImages")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductId");
 
                     b.HasOne("Vegist.Models.Slider", "Slider")
                         .WithMany("ProductImages")

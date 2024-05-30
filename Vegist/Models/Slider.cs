@@ -8,10 +8,8 @@ namespace Vegist.Models
         public string Name { get; set; } = null!;
         public string Description { get; set; } = null!;
         [NotMapped]
-        public ICollection<IFormFile>? Files { get; set; }
-        [NotMapped]
-        public IFormFile MainFile { get; set; } = null!;
-        public ICollection<ProductImage>? ProductImages { get; set; }
-        public string ImagePath { get; set; } = null!;
+        public IFormFile Files { get; set; } = null!;
+        public ICollection<ProductImage> ProductImages { get; set; } = new List<ProductImage>();
+        public string ImagePath { get; set; } = string.Empty;
     }
 }
