@@ -7,7 +7,7 @@ using Vegist.Models;
 namespace Vegist.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
 
     public class MaterialController : Controller
     {

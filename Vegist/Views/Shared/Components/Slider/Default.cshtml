@@ -1,0 +1,15 @@
+﻿@model List<Slider>
+
+@foreach (var slider in Model)
+{
+    <div class="swiper-slide">
+        <img src="~/Client/assets/images/sliderImg1.webp" alt="sliderImg">
+        <div class="slide-desc">
+            <p>@slider.Name</p>
+            <h3>
+               @slider.Description
+            </h3>
+            <a asp-controller="Product" asp-action="Index">Order Now</a>
+        </div>
+    </div>
+}  

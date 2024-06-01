@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="~/Client/css/style.css">
     <link rel="stylesheet" href="~/Client/css/product.css">
+    <link rel="stylesheet" href="~/Client/css/shop.css">
     <link rel="stylesheet" href="~/Client/css/basket.css">
 
     <link rel="stylesheet" href="~/Client/css/about.css">
@@ -16,7 +17,6 @@
     <link rel="stylesheet" href="~/Client/css/blogBrand.css">
     <link rel="stylesheet" href="~/Client/css/contact.css">
     <link rel="stylesheet" href="~/Client/css/login.css">
-    <link rel="stylesheet" href="~/Client/css/shop.css">
     <link rel="stylesheet" href="~/Client/css/wishlist.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,8 +53,8 @@
                             </li>
                             <li>
                                 <a asp-controller="Blog" asp-action="Default">
-                                    <p>Blogs</p>
-                                    <!-- <i class="fa-solid fa-chevron-down"></i> -->
+                                <p>Blogs</p>
+                                <!-- <i class="fa-solid fa-chevron-down"></i> -->
                                 </a>
                             </li>
                             <li>
@@ -82,7 +82,7 @@
                             <Li class="loginHeader">
                                 <i class="fa-regular fa-user UserLogin"></i>
                                 <div class="loginHeaderA">
-                                    <a href="./login.html">
+                                    <a asp-controller="Account" asp-action="Login">
                                         <p class="MyLogin">Login</p>
                                     </a>
                                     <a asp-controller="Dashboard" asp-action="Index" asp-area="Admin">
@@ -97,9 +97,10 @@
                                 </a>
                             </Li>
                             <Li>
-                                <a asp-controller="Basket" asp-action="Detail">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                    <span>0</span>
+                                <a asp-controller="Basket" asp-action="Default">
+                                @* @await Component.InvokeAsync("Basket") *@
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span>0</span>
                                 </a>
                             </Li>
                         </ul>
@@ -123,40 +124,13 @@
                         </div>
                         <div class="CategoryList DisplayNone">
                             <ul>
-                                <Li>Fresh vegetable</Li>
-                                <Li>Fresh fruits</Li>
-                                <Li>Cow milk</Li>
-                                <Li>Fresh meat</Li>
-                                <Li>Green dhaniya</Li>
+                                @await Component.InvokeAsync("CategoryFilter")
                             </ul>
                         </div>
                     </div>
                     <div class="swiper mySwiper1">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide menuslide">
-                                <img src="~/Client/assets/images/mini-img.webp" alt="mini-img">
-                                <p>Haldi powder</p>
-                            </div>
-                            <div class="swiper-slide menuslide">
-                                <img src="~/Client/assets/images/mini-img.webp" alt="mini-img">
-                                <p>Haldi powder</p>
-                            </div>
-                            <div class="swiper-slide menuslide">
-                                <img src="~/Client/assets/images/mini-img.webp" alt="mini-img">
-                                <p>Haldi powder</p>
-                            </div>
-                            <div class="swiper-slide menuslide">
-                                <img src="~/Client/assets/images/mini-img.webp" alt="mini-img">
-                                <p>Haldi powder</p>
-                            </div>
-                            <div class="swiper-slide menuslide">
-                                <img src="~/Client/assets/images/mini-img.webp" alt="mini-img">
-                                <p>Haldi powder</p>
-                            </div>
-                            <div class="swiper-slide menuslide">
-                                <img src="~/Client/assets/images/mini-img.webp" alt="mini-img">
-                                <p>Haldi powder</p>
-                            </div>
+                            @await Component.InvokeAsync("CategoryHeader")
                         </div>
                         <!-- <div class="swiper-button-prev"></div>
                         <div class="swiper-button-next"></div> -->
@@ -166,6 +140,7 @@
         </div>
         <div class="searchSection">
             <div class="container">
+                @* @await Component.InvokeAsync("Search") *@
                 <div class="search">
                     <button id="close-search">
                         <i class="fa-solid fa-xmark"></i>
@@ -197,7 +172,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./blog.html">
+                        <a asp-controller="Blog" asp-action="Dashboard">
                             <p>Blogs</p>
                         </a>
                     </li>
@@ -207,7 +182,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./contact.html">
+                        <a asp-controller="Contact" asp-action="Dashboard">
                             <p>Contact us</p>
                         </a>
                     </li>
@@ -246,8 +221,8 @@
                                 <!-- <i class="fa-solid fa-minus"></i> -->
                                 <i class="fa-solid fa-plus"></i>
                             </div>
-                            <div>
-                                <ul class="footerSubList">
+                            <div class="footerSubList">
+                                <ul>
                                     <li>
                                         <a href="./about.html">About vegist</a>
                                     </li>

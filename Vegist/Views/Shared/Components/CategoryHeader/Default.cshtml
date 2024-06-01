@@ -1,0 +1,9 @@
+﻿@model List<Category>
+
+@foreach (var category in Model)
+{
+    <div class="swiper-slide menuslide">
+        <img width="100" src="~/Client/assets/images/@category.ProductImages.FirstOrDefault(x=>x.IsMain)?.Url" />
+        <p>@category.Name</p>
+    </div>
+} 

@@ -207,6 +207,7 @@ header .line {
         padding: 10px 15px;
         cursor: pointer;
         transition: all 0.3s linear;
+        border-bottom: 1px solid #e2e2e2;
     }
 
         .CategoryList ul li:hover {
@@ -482,6 +483,10 @@ header .line {
             background-color: black;
             transition: all 0.3s linear;
         }
+
+    .slide-desc p {
+        padding-left: 0;
+    }
 
 /* SliderSection end */
 /* BannerSection start */

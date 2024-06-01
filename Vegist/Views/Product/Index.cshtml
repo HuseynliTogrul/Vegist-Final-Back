@@ -25,7 +25,7 @@
                         <h3>Categories</h3>
                         <div class="categoryFilterList">
                             <ul>
-                                @await Component.InvokeAsync(nameof(Category))
+                                @await Component.InvokeAsync("Category")
                             </ul>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                         <h3>Size</h3>
                         <div class="sizeFilterList">
                             <ul>
-                                @await Component.InvokeAsync(nameof(Size))
+                                @await Component.InvokeAsync("Size")
                             </ul>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                         <h3>Material</h3>
                         <div class="materialFilterList">
                             <ul>
-                                @await Component.InvokeAsync(nameof(Material))
+                                @await Component.InvokeAsync("Material")
                             </ul>
                         </div>
                     </div>
@@ -86,14 +86,14 @@
                 <div class="detail-img">
                     <div class="mainImg">
                         <i class="fa-solid fa-chevron-left mainImgIcon"></i>
-                        <img src="./assets/images/product1.webp" alt="product1">
+                        <img src="~Client/assets/images/product1.webp" alt="product1">
                         <i class="fa-solid fa-chevron-right mainImgIcon"></i>
                     </div>
                     <div class="detailImg-slider">
-                        <img src="./assets/images/product1-Hover.webp" alt="">
-                        <img src="./assets/images/product1.webp" alt="">
-                        <img src="./assets/images/product2-Hover.webp" alt="">
-                        <img src="./assets/images/product2.webp" alt="">
+                        <img src="~/Client/assets/images/product1.webp" alt="" class="slideImage active">
+                        <img src="~/Client/assets/images/product2.webp" alt="" class="slideImage">
+                        <img src="~/Client/assets/images/product3.webp" alt="" class="slideImage">
+                        <img src="~/Client/assets/images/product4.webp" alt="" class="slideImage">
                     </div>
                 </div>
                 <div class="detail-info">
@@ -101,26 +101,37 @@
                     <div class="line"></div>
                     <div class="rating">
                         <ul>
-                            <li>
-                                <i class="fa-solid fa-star"></i>
-                            </li>
-                            <li>
-                                <i class="fa-solid fa-star"></i>
-                            </li>
-                            <li>
-                                <i class="fa-solid fa-star"></i>
-                            </li>
-                            <li>
-                                <i class="fa-solid fa-star"></i>
-                            </li>
-                            <li>
-                                <i class="fa-regular fa-star"></i>
-                            </li>
+                            @foreach (var product in Model.Products)
+                            {
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    <li>
+                                        @if (i <= product.Rating)
+                                        {
+                                            <i class="fa-solid fa-star"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fa-regular fa-star"></i>
+                                        }
+                                    </li>
+                                }
+                            }
                         </ul>
                     </div>
                     <div class="productPrice">
-                        <div class="newPrice">€18.00</div>
-                        <div class="oldPrice">€20.00</div>
+                        @foreach (var product in Model.Products)
+                        {
+                            @if (product.DiscPrice > 0)
+                            {
+                                <span>₼@product.DiscPrice</span>
+                                <span class="oldPrice">₼@product.SellPrice</span>
+                            }
+                            else
+                            {
+                                <span>₼@product.SellPrice</span>
+                            }
+                        }
                     </div>
                     <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
@@ -130,9 +141,7 @@
                         <h4>Size: <span>1kg</span> </h4>
                         <div class="sizeDetailList">
                             <ul>
-                                <li class="SDetailLi">1kg</li>
-                                <li class="SDetailLi">2kg</li>
-                                <li class="SDetailLi">5kg</li>
+                                @await Component.InvokeAsync("Size")
                             </ul>
                         </div>
                     </div>
@@ -140,9 +149,7 @@
                         <h4>Material: <span>Canada</span> </h4>
                         <div class="materialDetailList">
                             <ul>
-                                <li class="MDetailLi">Canada</li>
-                                <li class="MDetailLi">India</li>
-                                <li class="MDetailLi">Germany</li>
+                                @await Component.InvokeAsync("Material")
                             </ul>
                         </div>
                     </div>
@@ -175,10 +182,10 @@
                         </ul>
                     </div>
                     <div class="detail-checkout">
-                        <img src="./assets/icons/visa.svg" alt="">
-                        <img src="./assets/icons/paypal.svg" alt="">
-                        <img src="./assets/icons/mastercard.svg" alt="">
-                        <img src="./assets/icons/express.svg" alt="">
+                        <img src="~Client/assets/icons/visa.svg" alt="">
+                        <img src="~Client/assets/icons/paypal.svg" alt="">
+                        <img src="~Client/assets/icons/mastercard.svg" alt="">
+                        <img src="~Client/assets/icons/express.svg" alt="">
                     </div>
                 </div>
             </div>

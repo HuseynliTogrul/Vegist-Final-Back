@@ -55,8 +55,18 @@
                                 </ul>
                             </div>
                             <div class="productPrice">
-                                <div class="newPrice">€18.00</div>
-                                <div class="oldPrice">€20.00</div>
+                                @foreach (var product in Model.Products)
+                                {
+                                    @if (product.DiscPrice > 0)
+                                    {
+                                        <span>₼@product.DiscPrice</span>
+                                        <span class="oldPrice">₼@product.SellPrice</span>
+                                    }
+                                    else
+                                    {
+                                        <span>₼@product.SellPrice</span>
+                                    }
+                                }
                             </div>
                             <p>
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
@@ -66,9 +76,7 @@
                                 <h4>Size: <span>1kg</span> </h4>
                                 <div class="sizeDetailList">
                                     <ul>
-                                        <li class="SDetailLi">1kg</li>
-                                        <li class="SDetailLi">2kg</li>
-                                        <li class="SDetailLi">5kg</li>
+                                        @await Component.InvokeAsync("Size")
                                     </ul>
                                 </div>
                             </div>
@@ -76,9 +84,7 @@
                                 <h4>Material: <span>Canada</span> </h4>
                                 <div class="materialDetailList">
                                     <ul>
-                                        <li class="MDetailLi">Canada</li>
-                                        <li class="MDetailLi">India</li>
-                                        <li class="MDetailLi">Germany</li>
+                                        @await Component.InvokeAsync("Material")
                                     </ul>
                                 </div>
                             </div>

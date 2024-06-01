@@ -8,7 +8,7 @@ using Vegist.Models;
 namespace Vegist.Areas.Admin.Controllers
 {
     [Area("Admin")]
-
+    [Authorize(Roles = "Admin")]
     public class ProductSizeController : Controller
     {
         private readonly AppDbContext _context;

@@ -5,7 +5,7 @@ namespace Vegist.Models
 {
     public class ProductImage : BaseEntity
     {
-        public string Url { get; set; } = string.Empty;
+        public string? Url { get; set; }
         [NotMapped]
         public IFormFile? File { get; set; }
         public bool IsMain { get; set; }

@@ -15,7 +15,9 @@ namespace Vegist.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var categories = await _context.Categories.ToListAsync();
+            var categories = await _context.Categories
+                                                .Where(x => !x.IsDeleted)
+                                                .ToListAsync();
             return View(categories);
         }
     }
