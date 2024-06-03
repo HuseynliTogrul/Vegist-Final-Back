@@ -374,21 +374,21 @@
     <div class="productModal hidden">
         <div class="overlay hidden"></div>
         <div class="productM">
-            <button id="close-search">
+            <button class="closeIcon">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div class="product-detail">
                 <div class="detail-img">
                     <div class="mainImg">
-                        <i class="fa-solid fa-chevron-left mainImgIcon"></i>
-                        <img src="~/Client/assets/images/product1.webp" alt="product1">
-                        <i class="fa-solid fa-chevron-right mainImgIcon"></i>
+                        <i class="fa-solid fa-chevron-left mainImgIcon previous"></i>
+                        <img src="~/Client/assets/images/product1.webp" alt="product1" class="mainImage">
+                        <i class="fa-solid fa-chevron-right mainImgIcon next"></i>
                     </div>
                     <div class="detailImg-slider">
-                        <img src="~/Client/assets/images/product1-Hover.webp" alt="">
-                        <img src="~/Client/assets/images/product1.webp" alt="">
-                        <img src="~/Client/assets/images/product2-Hover.webp" alt="">
-                        <img src="~/Client/assets/images/product2.webp" alt="">
+                        <img src="~/Client/assets/images/product1.webp" alt="" class="slideImage active">
+                        <img src="~/Client/assets/images/product2.webp" alt="" class="slideImage">
+                        <img src="~/Client/assets/images/product3.webp" alt="" class="slideImage">
+                        <img src="~/Client/assets/images/product4.webp" alt="" class="slideImage">
                     </div>
                 </div>
                 <div class="detail-info">
@@ -422,7 +422,7 @@
                         Ipsum has been the industry's standard dummy text ever since the 1500s.
                     </p>
                     <div class="size-detail">
-                        <h4>Size: <span>1kg</span> </h4>
+                        <h4>Size: <span class="sizeSpan">1kg</span> </h4>
                         <div class="sizeDetailList">
                             <ul>
                                 <li class="SDetailLi">1kg</li>
@@ -432,7 +432,7 @@
                         </div>
                     </div>
                     <div class="material-detail">
-                        <h4>Material: <span>Canada</span> </h4>
+                        <h4>Material: <span class="materialSpan">Canada</span> </h4>
                         <div class="materialDetailList">
                             <ul>
                                 <li class="MDetailLi">Canada</li>
@@ -450,7 +450,9 @@
                         </div>
                     </div>
                     <div class="detail-btns">
-                        <button>Add to cart</button>
+                        <button id="addToCart">
+                            Add to cart
+                        </button>
                         <button>Buy it now</button>
                     </div>
                     <div class="detail-heart">
@@ -464,9 +466,15 @@
                     <div class="detail-share">
                         <h4>Share:</h4>
                         <ul>
-                            <li><i class="fa-brands fa-facebook-f"></i></li>
-                            <li><i class="fa-brands fa-twitter"></i></li>
-                            <li><i class="fa-brands fa-pinterest"></i></li>
+                            <li>
+                                <a href="https://facebook.com/"><i class="fa-brands fa-facebook-f"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://x.com/"><i class="fa-brands fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://pinterest.com/"><i class="fa-brands fa-pinterest"></i></a>
+                            </li>
                         </ul>
                     </div>
                     <div class="detail-checkout">
