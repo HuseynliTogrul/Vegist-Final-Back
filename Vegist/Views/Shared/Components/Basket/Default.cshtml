@@ -1,10 +1,4 @@
-﻿@model List<BasketItemVm>
-@{
-    decimal totalPrice = Model.Sum(x => x.Count * x.Price);
-}
-
-
-<main>
+﻿<main>
     <div class="breadcrumb">
         <div class="container">
             <div class="breadcrumb-list">
@@ -41,13 +35,13 @@
                             <li class="basketListLi">
                                 <div class="item-media">
                                     <div class="media-img">
-                                        <a href="./product.html">
-                                            <img src="./assets/images/product1.webp" alt="product1">
+                                        <a asp-controller="Product" asp-action="Detail">
+                                            <img src="~/Client/assets/images/product1.webp" alt="product1">
                                         </a>
                                     </div>
                                     <div class="media-info">
                                         <div class="media-title">
-                                            <a href="./product.html">Fresh apple (5kg)</a>
+                                            <a asp-controller="Product" asp-action="Detail">Fresh apple (5kg)</a>
                                         </div>
                                         <div class="media-price">
                                             <p class="discPrice">€14.00</p>
@@ -74,7 +68,7 @@
                                     </div>
                                 </div>
                                 <div class="item-total">
-                                    <p>@totalPrice</p>
+                                    <p>€14.00</p>
                                 </div>
                             </li>
                         </ul>
@@ -96,6 +90,6 @@
         </div>
     </div>
     <div class="notProduct">
-        <p>Your wishlist is empty <a href="./shop.html">Return to store</a></p>
+        <p>Your wishlist is empty <a asp-controller="Product" asp-action="Index">Return to store</a></p>
     </div>
 </main>
