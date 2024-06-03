@@ -6,48 +6,42 @@ img.onmousemove = function (e) {
 }
 
 
-const SDetailLi = document.querySelectorAll(".SDetailLi");
-const MDetailLi = document.querySelectorAll(".MDetailLi");
-
-const detailImgSlider = document.querySelectorAll(".detailImg-slider img");
-
-const mainImage = document.querySelector(".mainImage")
-const slideImage = document.querySelectorAll(".slideImage")
-const detailImg = document.querySelector(".detail-img")
-
-const previousBtn = document.querySelector(".previous")
-const nextBtn = document.querySelector(".next")
-
-
-
 // Size product
+
+const SDetailLi = document.querySelectorAll(".SDetailLi");
+const sizeSpan = document.querySelector(".sizeSpan")
 
 SDetailLi.forEach((size) => {
   size.addEventListener("click", () => {
-    SDetailLi.forEach((resetsize) => {
-      resetsize.style.border = "1px solid white";
+    SDetailLi.forEach((resetS) => {
+      resetS.style.border = "1px solid white";
     });
 
-    size.style.border =
-      size.style.border === "1px solid white" ? "2px solid #91b656" : "1px solid white";
+    sizeSpan.textContent = size.textContent;
+    size.style.border = "2px solid #91b656";
   });
 });
 
+
 // Material product
 
-MDetailLi.forEach((size) => {
-  size.addEventListener("click", () => {
-    MDetailLi.forEach((resetsize) => {
-      resetsize.style.border = "1px solid white";
+const MDetailLi = document.querySelectorAll(".MDetailLi");
+const materialSpan = document.querySelector(".materialSpan")
+
+MDetailLi.forEach((material) => {
+  material.addEventListener("click", () => {
+    MDetailLi.forEach((resetM) => {
+      resetM.style.border = "1px solid white";
     });
 
-    size.style.border =
-      size.style.border === "1px solid white" ? "2px solid #91b656" : "1px solid white";
+    materialSpan.textContent = material.textContent;
+      material.style.border = "2px solid #91b656";
   });
 });
 
 
 // Detail img 
+const detailImgSlider = document.querySelectorAll(".detailImg-slider img");
 
 detailImgSlider.forEach(imgSlider => {
   imgSlider.addEventListener("click", () => {
@@ -63,11 +57,17 @@ detailImgSlider.forEach(imgSlider => {
 
 //Product images
 
+const mainImage = document.querySelector(".mainImage")
+const slideImage = document.querySelectorAll(".slideImage")
+const detailImg = document.querySelector(".detail-img")
+
+const previousBtn = document.querySelector(".previous")
+const nextBtn = document.querySelector(".next")
+
 thumbnailClick = (event) => {
   slideImage.forEach(img => {
     img.classList.remove('active')
   })
-  // event.target.parentElement.classList.add('active')
   mainImage.src = event.target.src.replace('-thumbnail', '')
 }
 
@@ -108,3 +108,35 @@ setMainImage = (imageIndex) => {
 
 nextBtn.addEventListener('click', nextBtnClick)
 previousBtn.addEventListener('click', previousBtnClick)
+
+
+// Product Count +-
+
+const plusCount = document.querySelector(".plusCount");
+const minusCount = document.querySelector(".minusCount");
+const counter = document.querySelector(".counter");
+
+let count = 1;
+counter.value = count;
+
+plusCount.addEventListener("click", () => {
+  if (count < 10) {
+    count++;
+  }
+  counter.value = count;
+
+  if(count === 10){
+    plusCount.style.cursor = "no-drop";
+  }
+})
+
+minusCount.addEventListener("click", () => {
+  if (count > 1) {
+    count--;
+  }
+  counter.value = count;
+
+  if(count === 1){
+    minusCount.style.cursor = "no-drop";
+  }
+})

@@ -5,6 +5,7 @@ const overlay = document.querySelector(".overlay");
 const closeModalBtn = document.querySelector("#close-search i");
 
 
+
 const openModal = function () {
     productModal.classList.remove("hidden");
     overlay.classList.remove("hidden");

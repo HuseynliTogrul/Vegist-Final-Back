@@ -1,12 +1,15 @@
 ﻿@model PaginateVm
 @foreach (var product in Model.Products)
 {
-    <div class="productItem">
+    <div class="productItem" data-name="@product.Title" data-price="@product.SellPrice" data-category="@product.Category.Name" data-size="@product.ProductSizes" data-material="@product.ProductMaterials">
         <div class="productImg">
             <span>10%</span>
             <a asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id">
-                <img src="~/Client/assets/images/@(product.ProductImages.FirstOrDefault(x=>x.IsMain).Url)" alt="product1">
-                <img src="~/Client/assets/images/@(product.ProductImages.FirstOrDefault(x=>x.IsHover).Url)" class="hover DisplayNone" alt="productHover">
+                <img src="~/Client/assets/images/product1.webp" alt="product">
+                <img src="~/Client/assets/images/product1-Hover.webp" class="hover DisplayNone"
+                     alt="productHover">
+                @* <img src="~/Client/assets/images/@(product.ProductImages.FirstOrDefault(x=>x.IsMain).Url)" alt="product1">
+            <img src="~/Client/assets/images/@(product.ProductImages.FirstOrDefault(x=>x.IsHover).Url)" class="hover DisplayNone" alt="productHover"> *@
             </a>
 
             <div class="productIcon">

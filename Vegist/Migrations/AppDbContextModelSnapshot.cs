@@ -552,7 +552,7 @@ namespace Vegist.Migrations
                         .IsRequired();
 
                     b.HasOne("Vegist.Models.Product", "Product")
-                        .WithMany()
+                        .WithMany("ProductMaterials")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -596,6 +596,8 @@ namespace Vegist.Migrations
             modelBuilder.Entity("Vegist.Models.Product", b =>
                 {
                     b.Navigation("ProductImages");
+
+                    b.Navigation("ProductMaterials");
 
                     b.Navigation("ProductSizes");
                 });

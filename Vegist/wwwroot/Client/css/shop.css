@@ -44,25 +44,25 @@
     max-height: 200px;
 }
 
-    .categoryFilterList ul li,
-    .sizeFilterList ul li,
-    .materialFilterList ul li {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 15px;
-        cursor: pointer;
-    }
+.categoryFilterList ul li,
+.sizeFilterList ul li,
+.materialFilterList ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    cursor: pointer;
+}
 
-        .categoryFilterList ul li:hover,
-        .sizeFilterList ul li:hover,
-        .materialFilterList ul li:hover {
-            color: #91b656;
-        }
+.categoryFilterList ul li:hover,
+.sizeFilterList ul li:hover,
+.materialFilterList ul li:hover {
+    color: #91b656;
+}
 
-        .categoryFilterList ul li span {
-            padding-left: 5px;
-        }
+.categoryFilterList ul li span {
+    padding-left: 5px;
+}
 
 .checkBoxFilter input {
     cursor: pointer;
@@ -74,11 +74,11 @@
     margin-top: 20px;
 }
 
-    .shopFilterCount p {
-        border-bottom: 1px solid #e2e2e2;
-        padding: 0 10px 15px 10px;
-        font-size: 15px;
-    }
+.shopFilterCount p {
+    border-bottom: 1px solid #e2e2e2;
+    padding: 0 10px 15px 10px;
+    font-size: 15px;
+}
 
 .materialFilterList ul {
     border: none;
@@ -88,19 +88,19 @@
     width: 100%;
 }
 
-    .shop-right .productIcon {
-        left: 40px;
-    }
+.shop-right .productIcon {
+    left: 40px;
+}
 
-    .shop-right h3 {
-        font-size: 16px;
-        margin-bottom: 30px;
-        font-weight: 600;
-    }
+.shop-right h3 {
+    font-size: 16px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
 
-    .shop-right img {
-        width: 100%;
-    }
+.shop-right img {
+    width: 100%;
+}
 
 .shopSortFilter {
     border-bottom: 1px solid #e2e2e2;
@@ -108,7 +108,7 @@
 }
 
 .shopFilter {
-    /*display: flex;*/
+    display: flex;
     align-items: center;
     gap: 6px;
     margin-top: 30px;
@@ -149,24 +149,24 @@
     border-radius: 15px;
 }
 
-    .modal .flex {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+.modal .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-    .modal input {
-        padding: 0.7rem 1rem;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 0.9em;
-    }
+.modal input {
+    padding: 0.7rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
 
-    .modal p {
-        font-size: 0.9rem;
-        color: #777;
-        margin: 0.4rem 0 0.2rem;
-    }
+.modal p {
+    font-size: 0.9rem;
+    color: #777;
+    margin: 0.4rem 0 0.2rem;
+}
 
 button {
     cursor: pointer;

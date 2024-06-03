@@ -1,43 +1,14 @@
 "use strict";
 
-const loginHeader = document.querySelector(".loginHeader");
-const loginHeaderA = document.querySelector(".loginHeaderA");
-
-const categoryList = document.querySelector(".CategoryList");
-const CategoryHeader = document.querySelector(".CategoryHeader");
-
-const searchIcon = document.querySelector(".searchIcon");
-const searchSection = document.querySelector(".searchSection");
-const closeSearch = document.querySelector("#close-search");
-
-const productIcon = document.querySelector(".productIcon i")
-
-const menubarIcon = document.querySelector(".menubarIcon i")
-const menuMobile = document.querySelector(".menu-mobile")
-const menuHeaderIcon = document.querySelector(".menu-header i")
-
-const category = document.querySelectorAll('.category');
-const categories = document.querySelector('.categories');
+const overlay = document.querySelector(".overlay")
 
 const leftBtn = document.querySelector(".leftBtn");
 const rightBtn = document.querySelector(".rightBtn");
 
-const footerSubList = document.querySelectorAll(".footerSubList")
-const listHeader = document.querySelectorAll(".listHeader");
-
-const minus = document.querySelectorAll(".fa-minus");
-const plus = document.querySelectorAll(".fa-plus");
-
-const scroll = document.querySelector(".scroll")
-const overlay = document.querySelector(".overlay")
-
-const shopFilter = document.querySelector(".shopFilter");
-const shopLeft = document.querySelector(".shop-left");
-const closeIcon = document.querySelector(".closeIcon i");
-
-
 
 // Scroll
+
+const scroll = document.querySelector(".scroll")
 
 window.addEventListener("scroll", () => {
   if (window.pageYOffset > 100) {
@@ -54,12 +25,19 @@ scroll.addEventListener("click", () => {
 
 // Category
 
+const categoryList = document.querySelector(".CategoryList");
+const CategoryHeader = document.querySelector(".CategoryHeader");
+
 CategoryHeader.addEventListener("click", () => {
   categoryList.classList.toggle("DisplayNone");
 })
 
 
 // Search
+
+const searchIcon = document.querySelector(".searchIcon");
+const searchSection = document.querySelector(".searchSection");
+const closeSearch = document.querySelector("#close-search");
 
 searchIcon.addEventListener("click", () => {
   searchSection.style.display = "block";
@@ -81,6 +59,10 @@ window.onkeydown = function (event) {
 
 
 // MenuBar
+
+const menubarIcon = document.querySelector(".menubarIcon i")
+const menuMobile = document.querySelector(".menu-mobile")
+const menuHeaderIcon = document.querySelector(".menu-header i")
 
 menubarIcon.addEventListener("click", () => {
   if (menubarIcon.style.display === "none") {
@@ -181,28 +163,36 @@ var swiper = new Swiper(".mySwiper2", {
 
 //userLogin
 
+const loginHeader = document.querySelector(".loginHeader");
+const loginHeaderA = document.querySelector(".loginHeaderA");
+
 loginHeader.addEventListener("click", () => {
-    if (loginHeaderA.style.display === "block") {
-        loginHeaderA.style.display = "none"
-    } else {
-        loginHeaderA.style.display = "block"
-    }
+  if (loginHeaderA.style.display === "block") {
+    loginHeaderA.style.display = "none"
+  } else {
+    loginHeaderA.style.display = "block"
+  }
 })
 
 
 // Footer
+
+const listHeader = document.querySelectorAll(".listHeader")
 
 listHeader.forEach(header => {
   header.addEventListener('click', () => {
     const footerSublist = header.nextElementSibling;
     footerSublist.classList.toggle("show-menu");
 
-    if (footerSubList.classList.contains('show-menu')) {
-      plus.style.display = 'none';
-      minus.style.display = 'inline';
+    const plusIcon = header.querySelector('.fa-plus');
+    const minusIcon = header.querySelector('.fa-minus');
+
+    if (footerSublist.classList.contains('show-menu')) {
+      plusIcon.style.display = 'none';
+      minusIcon.style.display = 'inline';
     } else {
-      plus.style.display = 'inline';
-      minus.style.display = 'none';
+      plusIcon.style.display = 'inline';
+      minusIcon.style.display = 'none';
     }
   });
 });
@@ -210,6 +200,10 @@ listHeader.forEach(header => {
 
 //Shop page js
 //Filter
+
+const shopFilter = document.querySelector(".shopFilter");
+const shopLeft = document.querySelector(".shop-left");
+const closeIcon = document.querySelector(".closeIcon i");
 
 shopFilter.addEventListener("click", () => {
   shopLeft.style.display = "block";
@@ -232,71 +226,74 @@ document.addEventListener('keydown', function (event) {
 });
 
 
-// Products filter
+// Product Sort
 
-// const productsEl = document.querySelector(".products");
+document.getElementById('sort').addEventListener('change', function () {
+  const sortOption = this.value;
+  const productsContainer = document.querySelector('.products');
+  const products = Array.from(productsContainer.children);
 
-// const filteredCategories = [];
+  products.sort((a, b) => {
+    const nameA = a.getAttribute('data-name').toLowerCase();
+    const nameB = b.getAttribute('data-name').toLowerCase();
+    const priceA = parseFloat(a.getAttribute('data-price'));
+    const priceB = parseFloat(b.getAttribute('data-price'));
 
-// productsEl.innerHTML = ``;
+    if (sortOption === 'AZ') {
+      return nameA.localeCompare(nameB);
+    } else if (sortOption === 'ZA') {
+      return nameB.localeCompare(nameA);
+    } else if (sortOption === 'priceLowHigh') {
+      return priceA - priceB;
+    } else if (sortOption === 'priceHighLow') {
+      return priceB - priceA;
+    } else {
+      return 0;
+    }
+  });
 
-// filteredProducts.forEach((product) => {
-//   const pName = product.name
-//     .split(" ")
-//     .map((name) => name[0].toUpperCase() + name.slice(1))
-//     .join(" ");
+  products.forEach(product => productsContainer.appendChild(product));
+});
 
-//   productsEl.innerHTML += `<div class="productItem">
-//   <div class="productImg">
-//       <span>10%</span>
-//       <a href="./product.html">
-//           <img src="./assets/images/product1.webp" alt="product">
-//           <img src="./assets/images/product1-Hover.webp" class="hover DisplayNone"
-//               alt="productHover">
-//       </a>
-//       <div class="productIcon">
-//           <i class="fa-regular fa-heart heart"></i>
-//           <a href="./basket.html">
-//               <i class="fa-solid fa-cart-shopping"></i>
-//           </a>
-//           <a href="">
-//               <i class="fa-regular fa-eye"></i>
-//           </a>
-//       </div>
-//   </div>
-//   <div class="productDesc">
-//       <p>Blackberry 100%organic</p>
-//       <div class="rating">
-//           <ul>
-//               <li>
-//                   <i class="fa-solid fa-star"></i>
-//               </li>
-//               <li>
-//                   <i class="fa-solid fa-star"></i>
-//               </li>
-//               <li>
-//                   <i class="fa-solid fa-star"></i>
-//               </li>
-//               <li>
-//                   <i class="fa-solid fa-star"></i>
-//               </li>
-//               <li>
-//                   <i class="fa-regular fa-star"></i>
-//               </li>
-//           </ul>
-//       </div>
-//       <div class="productPrice">
-//           <div class="newPrice">€18.00</div>
-//           <div class="oldPrice">€20.00</div>
-//       </div>
-//   </div>
-// </div>`;
 
-//   const productItems = document.querySelectorAll(".productItem");
-//   productItems.forEach((productItem, index) => {
-//     productItem.addEventListener("click", () => {
-//       const selectedProduct = filteredProducts[index];
-//       localStorage.setItem("product", JSON.stringify(selectedProduct));
-//     });
-//   });
-// });
+// Product Filter
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  const categoryFilters = document.querySelectorAll('input[name="category"]');
+  const sizeFilters = document.querySelectorAll('input[name="size"]');
+  const materialFilters = document.querySelectorAll('input[name="material"]');
+
+  const products = document.querySelectorAll('.productItem');
+
+  categoryFilters.forEach(filter => filter.addEventListener('change', applyFilters));
+  sizeFilters.forEach(filter => filter.addEventListener('change', applyFilters));
+  materialFilters.forEach(filter => filter.addEventListener('change', applyFilters));
+
+  function applyFilters() {
+    const selectedCategories = Array.from(categoryFilters).filter(filter => filter.checked).map(filter => filter.value);
+    const selectedSizes = Array.from(sizeFilters).filter(filter => filter.checked).map(filter => filter.value);
+    const selectedMaterials = Array.from(materialFilters).filter(filter => filter.checked).map(filter => filter.value);
+
+    products.forEach(product => {
+      const productCategory = product.dataset.category;
+      const productSize = product.dataset.size;
+      const productMaterial = product.dataset.material;
+
+      const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(productCategory);
+      const sizeMatch = selectedSizes.length === 0 || selectedSizes.includes(productSize);
+      const materialMatch = selectedMaterials.length === 0 || selectedMaterials.includes(productMaterial);
+
+      if (categoryMatch && sizeMatch && materialMatch) {
+        product.style.display = 'block';
+      } else {
+        product.style.display = 'none';
+      }
+    });
+  }
+
+  applyFilters();
+});
+
+
+

@@ -1,43 +1,81 @@
-const plusCount = document.querySelector(".plusCount");
-const minusCount = document.querySelector(".minusCount");
-const counter = document.querySelector(".counter");
+document.addEventListener('DOMContentLoaded', function () {
+  const plusButtons = document.querySelectorAll('.plusCount');
+  const minusButtons = document.querySelectorAll('.minusCount');
+  const removeButtons = document.querySelectorAll('.removeBtn');
 
-let count = 1;
-counter.value = count;
 
-plusCount.addEventListener("click", () => {
-  if (count < 10) {
-    count++;
+  function updateTotalPrice(item) {
+    const quantityInput = item.querySelector('.counter');
+    const discountPrice = parseFloat(item.querySelector('.discPrice').textContent.replace('€', ''));
+    const totalPriceElement = item.querySelector('.item-total p');
+
+    const newTotalPrice = (quantityInput.value * discountPrice).toFixed(2);
+    totalPriceElement.textContent = `€${newTotalPrice}`;
   }
-  counter.value = count;
 
-  if(count === 10){
-    plusCount.style.cursor = "no-drop";
+  function updateButtonStyles(item) {
+    const quantityInput = item.querySelector('.counter');
+    const plusButton = item.querySelector('.plusCount');
+    const minusButton = item.querySelector('.minusCount');
+    const quantity = parseInt(quantityInput.value);
+
+    if (quantity >= 10) {
+      plusButton.style.cursor = 'no-drop';
+    } else {
+      plusButton.style.cursor = 'pointer';
+    }
+
+    if (quantity <= 1) {
+      minusButton.style.cursor = 'no-drop';
+    } else {
+      minusButton.style.cursor = 'pointer';
+    }
   }
-})
 
-minusCount.addEventListener("click", () => {
-  if (count > 1) {
-    count--;
+  function handleQuantityChange(event) {
+    const button = event.target;
+    const item = button.closest('.basketListLi');
+    const quantityInput = item.querySelector('.counter');
+    let quantity = parseInt(quantityInput.value);
+
+    if (button.classList.contains('plusCount') && quantity < 10) {
+      quantity += 1;
+    } else if (button.classList.contains('minusCount') && quantity > 1) {
+      quantity -= 1;
+    }
+
+    quantityInput.value = quantity;
+    updateTotalPrice(item);
+    updateButtonStyles(item);
+    updateGrandTotal();
   }
-  counter.value = count;
 
-  if(count === 1){
-    minusCount.style.cursor = "no-drop";
+  // Remove
+  function handleItemRemove(event) {
+    const button = event.target;
+    const item = button.closest('.basketListLi');
+    item.remove();
+    updateGrandTotal();
   }
-})
 
+  function updateGrandTotal() {
+    const allItems = document.querySelectorAll('.basketListLi');
+    let grandTotal = 0;
 
+    allItems.forEach(item => {
+      const totalPrice = parseFloat(item.querySelector('.item-total p').textContent.replace('€', ''));
+      grandTotal += totalPrice;
+    });
 
-///////////////////////////
+    const grandTotalElement = document.querySelector('.grandTotal');
+    if (grandTotalElement) {
+      grandTotalElement.textContent = `Grand Total: €${grandTotal.toFixed(2)}`;
+    }
+  }
 
-// const basketListLi = document.querySelector(".basketListLi");
-// const subtotal = document.querySelector(".item-total p");
-// const discPrice = document.querySelector(".discPrice");
+  plusButtons.forEach(button => button.addEventListener('click', handleQuantityChange));
+  minusButtons.forEach(button => button.addEventListener('click', handleQuantityChange));
+  removeButtons.forEach(button => button.addEventListener('click', handleItemRemove));
 
-
-// let totalPrice = 0;
-// let count1 = counter.value
-
-// totalPrice += (basketListLi.discPrice * basketListLi.count1);
-// subtotal.textContent = `${totalPrice}`;
+  updateGrandTotal();
+});

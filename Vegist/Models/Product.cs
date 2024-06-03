@@ -20,6 +20,7 @@ namespace Vegist.Models
         public int CategoryId { get; set; }
         public Category Category { get; set; } = null!;
         public ICollection<ProductSize>? ProductSizes { get; set; }
+        public ICollection<ProductMaterial>? ProductMaterials { get; set; }
         public Product()
         {
             ProductSizes = new HashSet<ProductSize>();
