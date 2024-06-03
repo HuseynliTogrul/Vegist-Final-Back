@@ -13,10 +13,10 @@
             </a>
 
             <div class="productIcon">
-                <i class="fa-regular fa-heart"></i>
-                <a asp-controller="Basket" asp-action="Default">
+                <i class="fa-regular fa-heart heart"></i>
+                @* <a asp-controller="Basket" asp-action="Default"> *@
                     <i class="fa-solid fa-cart-shopping shopBasket"></i>
-                </a>
+                @* </a> *@
                 <a asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id">
                     <i class="fa-regular fa-eye"></i>
                 </a>
