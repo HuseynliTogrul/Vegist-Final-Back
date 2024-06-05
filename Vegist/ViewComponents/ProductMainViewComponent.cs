@@ -18,7 +18,8 @@ namespace Vegist.ViewComponents
         {
             var products = _context.Products
                 .Include(x => x.Category)
-                .Include(x => x.ProductImages);
+                .Include(x => x.ProductImages)
+                .Where(x => !x.IsDeleted);
 
             var count = GetPageCount(pageSize);
             PaginateVm paginateVm = new PaginateVm()

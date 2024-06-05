@@ -176,7 +176,7 @@ namespace Vegist.Areas.Admin.Controllers
             }
 
             category.IsDeleted = true;
-            _context.Categories.Remove(category);
+            //_context.Categories.Remove(category);
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
