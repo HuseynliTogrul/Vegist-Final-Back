@@ -33,58 +33,52 @@
                             </div>
                         </div>
                         <div class="detail-info">
-                            <h2>Blackberry 100%organic</h2>
+                            <h2>@Model.Product.Title</h2>
                             <div class="line"></div>
                             <div class="rating">
                                 <ul>
-                                    <li>
-                                        <i class="fa-solid fa-star"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa-solid fa-star"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa-solid fa-star"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa-solid fa-star"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa-regular fa-star"></i>
-                                    </li>
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        <li>
+                                            @if (i <= Model.Product.Rating)
+                                            {
+                                                <i class="fa-solid fa-star"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="fa-regular fa-star"></i>
+                                            }
+                                        </li>
+                                    }
                                 </ul>
                             </div>
                             <div class="productPrice">
-                                @foreach (var product in Model.Products)
+                                @if (Model.Product.DiscPrice > 0)
                                 {
-                                    @if (product.DiscPrice > 0)
-                                    {
-                                        <span>₼@product.DiscPrice</span>
-                                        <span class="oldPrice">₼@product.SellPrice</span>
-                                    }
-                                    else
-                                    {
-                                        <span>₼@product.SellPrice</span>
-                                    }
+                                    <span>₼@Model.Product.DiscPrice</span>
+                                    <span class="oldPrice">₼@Model.Product.SellPrice</span>
+                                }
+                                else
+                                {
+                                    <span>₼@Model.Product.SellPrice</span>
                                 }
                             </div>
                             <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                Ipsum has been the industry's standard dummy text ever since the 1500s.
+                                @Model.Product.Description
                             </p>
                             <div class="size-detail">
-                                <h4>Size: <span>1kg</span> </h4>
+                                <h4>Size: <span class="sizeSpan">1kg</span> </h4>
                                 <div class="sizeDetailList">
                                     <ul>
-                                        @await Component.InvokeAsync("Size")
+                                        @await Component.InvokeAsync("SizeProduct")
                                     </ul>
                                 </div>
                             </div>
                             <div class="material-detail">
-                                <h4>Material: <span>Canada</span> </h4>
+                                <h4>Material: <span class="materialSpan">Canada</span> </h4>
                                 <div class="materialDetailList">
                                     <ul>
-                                        @await Component.InvokeAsync("Material")
+                                        @await Component.InvokeAsync("MaterialProduct")
                                     </ul>
                                 </div>
                             </div>

@@ -36,7 +36,7 @@
                                             <td class="sorting_1">
                                                 @if (Slider.ProductImages != null && Slider.ProductImages.Any())
                                                 {
-                                                    <img src="@Url.Content($"~/Client/assets/images/{Slider.ProductImages.First().ImagePath}")" alt="Slider Image" style="width: 100px; height: auto;" />
+                                                    <img src="@Url.Content($"~/Client/assets/images/{Slider.ProductImages.First().Url}")" alt="Slider Image" style="width: 100px; height: auto;" />
                                                 }
                                                 else
                                                 {

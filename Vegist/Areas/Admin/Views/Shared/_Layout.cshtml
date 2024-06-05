@@ -1,9 +1,9 @@
 ﻿@using Vegist.Services;
-@inject ILayoutService service;
+@* @inject ILayoutService service;
 @{
     var dto = await service.GetUser();
     string fullname = dto.FullName;
-}
+} *@
 <!DOCTYPE html>
 <html lang="en">
 

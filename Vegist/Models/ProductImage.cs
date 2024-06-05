@@ -16,6 +16,6 @@ namespace Vegist.Models
         public Category? Category { get; set; }
         public int? SliderId { get; set; }
         public Slider? Slider { get; set; }
-        public string ImagePath { get; set; } = string.Empty;
+        //public string ImagePath { get; set; } = string.Empty;
     }
 }

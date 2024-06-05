@@ -10,6 +10,6 @@ namespace Vegist.Models
         [NotMapped]
         public IFormFile Files { get; set; } = null!;
         public ICollection<ProductImage> ProductImages { get; set; } = new List<ProductImage>();
-        public string ImagePath { get; set; } = string.Empty;
+        //public string ImagePath { get; set; } = string.Empty;
     }
 }

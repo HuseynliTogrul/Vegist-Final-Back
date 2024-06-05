@@ -5,11 +5,11 @@ using Vegist.ViewModels;
 
 namespace Vegist.ViewComponents
 {
-    public class ProductViewComponent : ViewComponent
+    public class ProductMainViewComponent : ViewComponent
     {
         private readonly AppDbContext _context;
 
-        public ProductViewComponent(AppDbContext context)
+        public ProductMainViewComponent(AppDbContext context)
         {
             _context = context;
         }

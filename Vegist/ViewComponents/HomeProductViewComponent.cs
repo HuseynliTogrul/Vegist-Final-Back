@@ -19,12 +19,12 @@ namespace Vegist.ViewComponents
                 return View(await _context.Products
                     .Take(20)
                     .Include(x => x.Category)
-                    .Include(x => x.ProductImages).ToListAsync());
+                    .Include(x => x.ProductImages).Where(x => !x.IsDeleted).ToListAsync());
             }
             var products = await _context.Products.Where(x => x.CategoryId == categoryId)
                 .Take(20)
                 .Include(x => x.Category)
-                .Include(x => x.ProductImages).ToListAsync();
+                .Include(x => x.ProductImages).Where(x => !x.IsDeleted).ToListAsync();
 
             return View(products);
         }

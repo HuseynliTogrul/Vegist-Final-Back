@@ -2,6 +2,6 @@
 {
     public interface ILayoutService
     {
-        Task<UserGetDto> GetUser();
+        //Task<UserGetDto> GetUser();
     }
 }

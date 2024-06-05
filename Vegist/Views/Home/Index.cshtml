@@ -4,31 +4,7 @@
         <div class="container">
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    @await Component.InvokeAsync(nameof(Slider))
-                    @*  <div class="swiper-slide">
-                    <img src="~/Client/assets/images/sliderImg.webp" alt="sliderImg">
-                    <div class="slide-desc">
-                    <p>Fresh meat</p>
-                    <h3>Spices for <br> cooking</h3>
-                    <a asp-controller="Product" asp-action="Index">Shop Now</a>
-                    </div>
-                    </div>
-                    <div class="swiper-slide">
-                    <img src="~/Client/assets/images/sliderImg1.webp" alt="sliderImg">
-                    <div class="slide-desc">
-                    <p>Fresh & healthy</p>
-                    <h3>Vegetable <br> basket free</h3>
-                    <a asp-controller="Product" asp-action="Index">Order Now</a>
-                    </div>
-                    </div>
-                    <div class="swiper-slide">
-                    <img src="~/Client/assets/images/sliderImg2.webp" alt="sliderImg">
-                    <div class="slide-desc">
-                    <p>100% Organic</p>
-                    <h3>Delicious <br> ingredients</h3>
-                    <a asp-controller="Product" asp-action="Index">Shop Now</a>
-                    </div>
-                    </div> *@
+                    @await Component.InvokeAsync("Slider")
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -71,23 +47,12 @@
                 <h2>Our products <br> are fresh organic</h2>
                 <div class="productList">
                     <ul>
-                        <li>
-                        <a href="" class="active">Organic dryfruit</a>
-                        </li>
-                        <li>
-                        <a href="">Organic juice</a>
-                        </li>
-                        <li>
-                        <a href="">Sea & fish</a>
-                        </li>
-                        <li>
-                        <a href="">Pistachios</a>
-                        </li>
+                        @await Component.InvokeAsync("ProductHeader")
                     </ul>
                 </div>
             </div>
             <div class="products">
-                @await Component.InvokeAsync("Product")
+                @await Component.InvokeAsync("ProductMain")
             </div>
         </div>
     </div>

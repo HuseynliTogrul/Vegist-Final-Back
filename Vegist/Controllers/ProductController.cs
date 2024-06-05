@@ -19,7 +19,7 @@ namespace Vegist.Controllers
         }
         public async Task<IActionResult> Index(ProductSearchVm? vm, int page = 1, int pageSize = 1)
         {
-            var products = _context.Products.AsQueryable();
+            var products = _context.Products.Where(x => !x.IsDeleted).AsQueryable();
             products = products
                .Include(x => x.Category)
                .Include(x => x.ProductImages)
@@ -46,6 +46,8 @@ namespace Vegist.Controllers
             var product = await _context.Products
                .Include(x => x.Category)
                .Include(x => x.ProductImages)
+               .Include(x => x.ProductSizes)
+               .ThenInclude(x => x.Size)
                .FirstOrDefaultAsync(x => x.Id == id);
 
             if (product == null) return NotFound();

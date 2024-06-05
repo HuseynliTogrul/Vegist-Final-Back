@@ -9,7 +9,7 @@ using Vegist.Models;
 namespace Vegist.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class SliderController : Controller
     {
         private readonly AppDbContext _context;
@@ -86,7 +86,7 @@ namespace Vegist.Areas.Admin.Controllers
 
             slider.ProductImages.Add(new ProductImage
             {
-                ImagePath = uniqueFileName,
+                //ImagePath = uniqueFileName,
                 SliderId = slider.Id,
                 Url = uniqueFileName,
             });
@@ -167,7 +167,7 @@ namespace Vegist.Areas.Admin.Controllers
             var productImages = await _context.ProductImages.Where(pi => pi.SliderId == slider.Id).ToListAsync();
             foreach (var productImage in productImages)
             {
-                var imagePath = Path.Combine(_env.WebRootPath, "Client", "assets", "images", productImage.ImagePath);
+                var imagePath = Path.Combine(_env.WebRootPath, "Client", "assets", "images", productImage.Url);
                 if (System.IO.File.Exists(imagePath))
                 {
                     System.IO.File.Delete(imagePath);

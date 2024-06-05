@@ -9,7 +9,7 @@ using Vegist.ViewModels;
 namespace Vegist.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class CategoryController : Controller
     {
         private readonly AppDbContext _context;
@@ -22,9 +22,10 @@ namespace Vegist.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var categories = await _context.Categories
-                                            .Include(x => x.Products)
-                                            .Where(x => !x.IsDeleted)
-                                            .ToListAsync();
+                                     .Include(x => x.ProductImages)
+                                     .Include(x => x.Products)
+                                     .Where(x => !x.IsDeleted)
+                                     .ToListAsync();
             return View(categories);
         }
 
@@ -85,7 +86,7 @@ namespace Vegist.Areas.Admin.Controllers
 
             category.ProductImages.Add(new ProductImage
             {
-                ImagePath = uniqueFileName,
+                //ImagePath = uniqueFileName,
                 Category = category,
                 ProductId = product.Id
             });
@@ -166,7 +167,7 @@ namespace Vegist.Areas.Admin.Controllers
             var productImages = await _context.ProductImages.Where(pi => pi.CategoryId == category.Id).ToListAsync();
             foreach (var productImage in productImages)
             {
-                var imagePath = Path.Combine(_env.WebRootPath, "Client", "assets", "images", productImage.ImagePath);
+                var imagePath = Path.Combine(_env.WebRootPath, "Client", "assets", "images", productImage.Url);
                 if (System.IO.File.Exists(imagePath))
                 {
                     System.IO.File.Delete(imagePath);
