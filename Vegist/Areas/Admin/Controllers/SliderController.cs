@@ -86,7 +86,6 @@ namespace Vegist.Areas.Admin.Controllers
 
             slider.ProductImages.Add(new ProductImage
             {
-                //ImagePath = uniqueFileName,
                 SliderId = slider.Id,
                 Url = uniqueFileName,
             });

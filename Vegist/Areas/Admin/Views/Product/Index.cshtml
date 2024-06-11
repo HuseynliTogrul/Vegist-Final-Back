@@ -35,8 +35,7 @@
                                     @foreach (var product in Model)
                                     {
                                         <tr>
-                                            @* <td><img width="100" src="~/Client/assets/images/@product.ProductImages.FirstOrDefault(x=>x.IsMain).Url" /></td> *@
-                                            <td><img width="100" src="~/Client/assets/images/@product.ProductImages" /></td>
+                                            <td><img width="100" src="~/Client/assets/images/@product.ProductImages.FirstOrDefault(x=> x.IsMain)?.Url" /></td>
                                             <td>@product.Title</td>
                                             <td>@product.SellPrice</td>
                                             <td>@product.DiscPrice</td>

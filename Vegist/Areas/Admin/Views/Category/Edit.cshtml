@@ -13,7 +13,7 @@
     </div> *@
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">File</label>
-        <input asp-for="File" class="form-control p-1" id="catFile">
+        <input asp-for="File" type="file" class="form-control p-1" id="catFile">
         <span asp-validation-for="File" class="text-danger"></span>
     </div>
     <div asp-validation-summary="ModelOnly" class="text-danger">  </div>

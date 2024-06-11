@@ -90,7 +90,7 @@ namespace Vegist.Areas.Admin.Controllers
         {
             if (file == null)
             {
-                return null; 
+                return null;
             }
 
             if (!file.CheckFileSize(2))
@@ -109,6 +109,7 @@ namespace Vegist.Areas.Admin.Controllers
 
             return null;
         }
+
 
         private ProductImage CreateProductImage(string url, bool isHover, bool isMain, Product product)
         {
@@ -137,82 +138,13 @@ namespace Vegist.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(int id, Product product)
         {
-            if (id != product.Id || id == null || id < 1) return BadRequest();
+            if (id != product.Id) return BadRequest();
 
-            //var existProduct = await _context.Products.FindAsync(id);
-            var existProduct = _context.Products.Include(p => p.ProductImages).FirstOrDefault(p => p.Id == id);
-            if (existProduct == null)
-            {
-                return NotFound();
-            }
+            var existProduct = await _context.Products.Include(p => p.ProductImages)
+                                                      .FirstOrDefaultAsync(p => p.Id == id);
+            if (existProduct == null) return NotFound();
 
-            if (product.Files != null)
-            {
-                foreach (var file in product.Files)
-                {
-
-                    if (!file.CheckFileSize(2))
-                    {
-                        ModelState.AddModelError("Files", "Files cannot be more than 2mb");
-                        return View(product);
-                    }
-
-
-                    if (!file.CheckFileType("image"))
-                    {
-                        ModelState.AddModelError("Files", "Files must be image type!");
-                        return View(product);
-                    }
-                    var filename = await file.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
-                    var additionalProductImages = CreateProductImage(filename, false, false, product);
-                    existProduct.ProductImages.Add(additionalProductImages);
-                }
-            }
-            if (product.MainFile != null)
-            {
-                if (!product.MainFile.CheckFileSize(2))
-                {
-                    ModelState.AddModelError("MainFile", "Files cannot be more than 2mb");
-                    return View(product);
-                }
-
-
-                if (!product.MainFile.CheckFileType("image"))
-                {
-                    ModelState.AddModelError("MainFile", "Files must be image type!");
-                    return View(product);
-                }
-
-                product.MainFile.DeleteFile(_env.WebRootPath, "Client", "assets", "images", existProduct.ProductImages.FirstOrDefault(x => x.IsMain).Url);
-                var mainFileName = await product.MainFile.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
-                var mainProductImage = CreateProductImage(mainFileName, false, false, product);
-                existProduct.ProductImages.Add(mainProductImage);
-
-            }
-            if (product.HoverFile != null)
-            {
-                if (!product.HoverFile.CheckFileSize(2))
-                {
-                    ModelState.AddModelError("HoverFile", "Files cannot be more than 2mb");
-                    return View(product);
-                }
-
-
-                if (!product.HoverFile.CheckFileType("image"))
-                {
-                    ModelState.AddModelError("HoverFile", "Files must be image type!");
-                    return View(product);
-                }
-                var hoverImage = existProduct.ProductImages.FirstOrDefault(x => x.IsHover);
-                if (hoverImage != null)
-                {
-                    product.HoverFile.DeleteFile(_env.WebRootPath, "Client", "assets", "images", hoverImage.Url);
-                }
-                var hoverFileName = await product.HoverFile.SaveFileAsync(_env.WebRootPath, "Client", "assets", "images");
-                var hoverProductImageCreate = CreateProductImage(hoverFileName, true, false, product);
-                existProduct.ProductImages.Add(hoverProductImageCreate);
-            }
-
+            // Update existing product fields
             existProduct.Title = product.Title;
             existProduct.Rating = product.Rating;
             existProduct.SellPrice = product.SellPrice;
@@ -220,10 +152,60 @@ namespace Vegist.Areas.Admin.Controllers
             existProduct.Description = product.Description;
             existProduct.CategoryId = product.CategoryId;
 
+            if (product.Files != null)
+            {
+                foreach (var file in product.Files)
+                {
+                    var errorMessage = await ProcessFileAsync(file, existProduct, isHover: false, isMain: false);
+                    if (errorMessage != null)
+                    {
+                        ModelState.AddModelError("Files", errorMessage);
+                        ViewBag.Categories = await _context.Categories.Where(x => !x.IsDeleted).ToListAsync();
+                        return View(product);
+                    }
+                }
+            }
+
+            if (product.MainFile != null)
+            {
+                var mainImage = existProduct.ProductImages.FirstOrDefault(x => x.IsMain);
+                if (mainImage != null)
+                {
+                    mainImage.Url.DeleteFile(_env.WebRootPath, "Client", "assets", "images");
+                    _context.ProductImages.Remove(mainImage);
+                }
+
+                var mainFileErrorMessage = await ProcessFileAsync(product.MainFile, existProduct, isHover: false, isMain: true);
+                if (mainFileErrorMessage != null)
+                {
+                    ModelState.AddModelError("MainFile", mainFileErrorMessage);
+                    ViewBag.Categories = await _context.Categories.Where(x => !x.IsDeleted).ToListAsync();
+                    return View(product);
+                }
+            }
+
+            if (product.HoverFile != null)
+            {
+                var hoverImage = existProduct.ProductImages.FirstOrDefault(x => x.IsHover);
+                if (hoverImage != null)
+                {
+                    hoverImage.Url.DeleteFile(_env.WebRootPath, "Client", "assets", "images");
+                    _context.ProductImages.Remove(hoverImage);
+                }
+
+                var hoverFileErrorMessage = await ProcessFileAsync(product.HoverFile, existProduct, isHover: true, isMain: false);
+                if (hoverFileErrorMessage != null)
+                {
+                    ModelState.AddModelError("HoverFile", hoverFileErrorMessage);
+                    ViewBag.Categories = await _context.Categories.Where(x => !x.IsDeleted).ToListAsync();
+                    return View(product);
+                }
+            }
 
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+
 
         public async Task<IActionResult> Detail(int? id)
         {
@@ -241,14 +223,26 @@ namespace Vegist.Areas.Admin.Controllers
         public async Task<IActionResult> DeleteImage(int id)
         {
             var existsImage = await _context.ProductImages.FindAsync(id);
+            if (existsImage == null)
+            {
+                return NotFound();
+            }
+
             var product = await _context.Products.Include(x => x.Category)
-                                                  .Include(x => x.ProductImages)
-                                                  .FirstOrDefaultAsync(x => x.Id == existsImage.ProductId);
-            existsImage.File.DeleteFile(_env.WebRootPath, "Client", "assets", "images", existsImage.Url);
-            _context.Remove(existsImage);
+                                                 .Include(x => x.ProductImages)
+                                                 .FirstOrDefaultAsync(x => x.Id == existsImage.ProductId);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            existsImage.Url.DeleteFile(_env.WebRootPath, "Client", "assets", "images");
+            _context.ProductImages.Remove(existsImage);
             await _context.SaveChangesAsync();
+
             return PartialView("_ProductImagePartial", product.ProductImages);
         }
+
 
         public async Task<IActionResult> Delete(int id)
         {
