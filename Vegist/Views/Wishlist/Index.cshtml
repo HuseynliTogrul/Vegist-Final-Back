@@ -1,0 +1,82 @@
+﻿@model PaginateVm
+<main>
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-list">
+                <ul>
+                    <li>
+                        <a asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li>
+                        <p>/ Wishlist</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="favouriteProduct">
+        <div class="container">
+            <h2>Favourite Product</h2>
+            <div class="products">
+                <div class="productItem">
+                    <div class="productImg">
+                        <span>10%</span>
+                        <img src="~/Client/assets/images/product1.webp" alt="product">
+                        <img src="~/Client/assets/images/product1-Hover.webp" class="hover DisplayNone" alt="productHover">
+                        <div class="productIcon">
+                            <a href="">
+                                <i class="fa-regular fa-heart"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa-regular fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="productDesc">
+                        <p>Blackberry 100%organic</p>
+                        <div class="rating">
+                            <ul>
+                                @foreach (var product in Model.Products)
+                                {
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        <li>
+                                            @if (i <= product.Rating)
+                                            {
+                                                <i class="fa-solid fa-star"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="fa-regular fa-star"></i>
+                                            }
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                        <div class="productPrice">
+                            @foreach (var product in Model.Products)
+                            {
+                                @if (product.DiscPrice > 0)
+                                {
+                                    <span>₼@product.DiscPrice</span>
+                                    <span class="oldPrice">₼@product.SellPrice</span>
+                                }
+                                else
+                                {
+                                    <span>₼@product.SellPrice</span>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="notFavouriteProduct">
+        <p>Your wishlist is empty <a asp-controller="Shop" asp-action="Index">Return to store</a></p>
+    </div>
+</main>
